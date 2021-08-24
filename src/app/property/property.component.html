@@ -1,0 +1,102 @@
+<br>
+<div>
+  <mat-toolbar>
+    <span class="title-center">Property Details</span>
+  </mat-toolbar>
+  <div class="container ">
+    <div class="row">
+      <div class="content ">
+        <hr class="invis">
+        <div class="col-sm-6 col-md-4 col-lg-4 padding" *ngFor="let product of resultItems">
+          <mat-card class="mat-elevation-z12 ">
+            <mat-card-header>
+              <mat-card-title>{{product.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{product.src}}">
+            <div class="feature_2im2 clearfix">
+              <h4 class="pull-right mgt"><a href="#" class="bg_4" >For Rent</a></h4>
+            </div>
+            <mat-card-content>
+              <p>
+              <h2>{{product.description}}</h2> <br>
+              {{product.details}}<br>
+              {{product.price}}<br>
+              <mat-icon> location_on</mat-icon>
+              {{product.address}}
+
+            </mat-card-content>
+            <hr class="invis">
+            <mat-card-actions>
+              <button mat-button color="black">
+
+              </button>
+              <button mat-button color="black" (click)="myClickFunction($event)">
+                <mat-icon>book</mat-icon>Book
+              </button>
+              <button mat-button color="black">
+                <mat-icon>share</mat-icon> <a href="https://web.whatsapp.com/">Share</a>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- properties for rent -->
+<mat-toolbar>
+  <span class="title-center">Properties For Rent</span>
+</mat-toolbar>
+<br>
+<div class="about-box ">
+  <div class="container imagesss">
+    <div class="row">
+      <hr class="invis">
+      <div class="top-feature owl-carousel owl-theme">
+        <div class="item">
+          <div class="single-feature">
+            <div class="portfolio-items">
+              <div class="col-sm-6 col-md-4 col-lg-4 div" *ngFor="let pro of proc">
+                <div class="portfolio-item ">
+                  <div class="hover-bg"><a href="" data-lightbox-gallery="gallery1">
+                      <div class="hover-text asdff">
+                        <h4>{{pro.name}}<br></h4>
+                        <h5>{{pro.price}}<br></h5>
+                        <h5>{{pro.Details}}</h5>
+                        <section>
+                          <div class="example-button-row">{{pro.description}}<br></div>
+                        </section>
+                      </div>
+                      <img src="{{pro.src}}" class="img-responsive" alt="Project Title">
+                    </a> </div>
+                  <button mat-button [routerLink]='["/Contact"]' class="colorrr">More Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- const port = 3000 
+app.listen(port, ()=>{
+  console.log(`Example app listening at http://localhost:${port}`)
+})-->
+<!-- const app = express() -->
+
+<!-- const express = require('express')  
+const app = express()
+const port = 3000
+const testData = {
+  name: 'John Doe',
+  age: '30',
+  account_balance: '15.5'
+}
+app.get('/', (req, res) => res.send(testData))
+app.listen(port, () => console.log(`Server listening on port ${port}`))-->
+
+<!-- app.set('port', process.env.PORT || 8080); -->

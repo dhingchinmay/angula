@@ -1,0 +1,76 @@
+.content {
+  padding: 20px;
+}
+
+.content > mat-card {
+  width: 300px;
+}
+
+.title-center {
+ flex: 1 1 auto;
+ text-align: center;
+}
+
+.image{
+ height: 111%;
+ width: 111%;
+}
+
+div {
+ padding-bottom: 1px;
+}
+  
+  /*css For rent */
+  .feature_2im2 h4{
+    display:inline-block; 
+     }
+    .feature_2im2 h4 a{
+    display:block; 
+     }
+    .feature_2im2 h4 .bg_1{
+    background:#18ba60;
+    border-radius:2px;
+    padding:6px 14px 8px 14px;
+    color:#fff;
+     }
+    .feature_2im2 h4 .bg_2{
+    background:#ffb200;
+    border-radius:2px;
+    padding:6px 14px 8px 14px;
+    color:#fff;
+     }
+     .feature_2im2{
+      position:absolute;
+      top:60px;
+      width:95%;
+       }
+  
+       .feature_2im2 h4 .bg_4{
+        background:#e54242;
+        border-radius:2px;
+        padding:6px 14px 8px 14px;
+        color:#fff;
+         }
+  .pull-right{
+    float:right!important;
+  }
+  .mgt{
+    margin-top:0!important;
+    }
+    /* rent for css end */
+
+
+    .imagesss{
+      height: 90%;
+      width: 90%;
+    }
+    .padding{
+      padding-bottom: 20px;
+    }
+    .asdff{
+      padding-top: 50px;
+    }
+    
+    .colorrr{
+      color: black;
+    }

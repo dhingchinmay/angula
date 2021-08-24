@@ -1,0 +1,86 @@
+.color{
+    background-color:black;
+}
+.app-footer {
+    margin-top: 2em;
+    text-align: center;
+    vertical-align:middle;
+    min-height: 8%
+  }
+  
+  .app-footer-link { 
+    line-height: 1.5em;
+  }
+  
+  .app-footer-link p {
+      margin: 0;
+  }
+
+  .row/*:after*/ {
+display: flex;
+/*content: "";
+display: table;
+clear: both;*/
+}
+
+.firstrow/*:after*/ {
+display: flex;
+/*content: "";
+display: table;
+clear: both;*/
+padding-top: 12px;
+}
+
+.column {
+flex: 25%;
+/*width:20%;*/
+float:left;
+font-size:12px;
+}
+.headingcolumn {
+flex: 25%;
+/*width:20%;*/
+float:left;
+font-size:18px;
+/*line-height:12px;*/
+}
+.maincolumnleft {
+flex: 50%;
+/*width: 50%;*/
+float: left;
+}
+.maincolumnright {
+/*flex: 50%;*/
+width: 50%;
+float: right;
+}
+.fullcolumn {
+width: 100%;
+/*flex:100%;*/
+font-size: 12px;
+text-align: center;
+vertical-align: middle;
+}
+
+.heading{
+font-size:18px;
+}
+
+  @media screen and (max-width: 600px) {
+.column {
+  /*flex:100%;*/
+  width: 100%;
+}
+.headingcolumn {
+  /*flex: 100%;*/
+  width: 100%;
+}
+.maincolumnleft {
+  /*flex: 100%;*/
+  width: 100%;
+}
+.maincolumnright {
+  /*flex: 100%;*/
+  width: 100%;
+}
+}

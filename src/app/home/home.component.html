@@ -1,0 +1,40 @@
+<app-slider *ngIf="sliderValue"></app-slider>
+<app-card></app-card>
+<br>
+<mat-toolbar>
+  <span class="title-center">Properties For Rent</span>
+</mat-toolbar>
+<br>
+<div class="about-box">
+  <div class="container image">
+    <div class="row">
+      <hr class="invis">
+      <div class="top-feature owl-carousel owl-theme">
+        <div class="item">
+          <div class="single-feature">
+            <div class="portfolio-items">
+              <div class="col-sm-6 col-md-4 col-lg-4 " *ngFor="let product of products">
+                <div class="portfolio-item">
+                  <div class="hover-bg"> <a [routerLink]='["/Property"]' data-lightbox-gallery="gallery1">
+                      <div class="hover-text asdfg">
+                        <h4>
+                          <br>{{product.name}}
+                          <h6><i class="fa fa-hotel col_2"></i> </h6>
+                        </h4>
+                        <section>
+                          <div class="example-button-row">{{product.description}}<br>
+                            <button mat-button color="accent">More Details</button>
+                          </div>
+                        </section>
+                      </div>
+                      <img src="{{product.src}}" class="img-responsive" alt="Project Title">
+                    </a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

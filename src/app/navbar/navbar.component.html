@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+
+<mat-toolbar class="mat-elevation-z8 app-toolbar navbar-fixed-top ">
+  <mat-icon>line_style</mat-icon><a mat-button [routerLink]='["/"]'>House Renting App</a>
+
+  <div class="spacer"></div>
+  <a mat-button [routerLink]='["/home"]'>
+    <mat-icon>home</mat-icon>Home
+  </a>
+  <a mat-button *ngIf="!isLogin" [routerLink]='["/Register"]'>
+    <mat-icon>account_box</mat-icon>Register
+  </a>
+  <a mat-button *ngIf="!isLogin" [routerLink]='["/Login"]'>
+    <mat-icon>https</mat-icon>Login
+  </a>
+  <a mat-button [routerLink]='["/Property"]'>
+    <mat-icon>group_work</mat-icon>Property
+  </a>
+  <a mat-button [routerLink]='["/Contact"]'>
+    <mat-icon>perm_contact_calendar</mat-icon>Contact
+  </a>
+  <a mat-button [routerLink]='["/Maps"]'>
+    <mat-icon> directions</mat-icon>Maps
+  </a>
+  <!-- <form class="form-inline md-form form-sm active-cyan-2"> -->
+  <input class="form-control example" type="text" [(ngModel)]="searchValue" (ngModelChange)="applyFilter($event)"
+    placeholder="Search" aria-label="Search" mdbInput>
+  <button mat-button (click)="logOut()" *ngIf="isLogin">
+    <mat-icon> power_settings_new</mat-icon>LogOut
+  </button>
+
+  <!-- </form> -->
+
+</mat-toolbar>
+<!-- <input (ngModelChange)="av($event)"> -->
+<router-outlet></router-outlet>
