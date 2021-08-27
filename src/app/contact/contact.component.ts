@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +10,59 @@ import { Router } from '@angular/router';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  email = "";
+  name = "";
+  telephone = "";
+  subject = "";
+  commentandfeedback = "";
+  errorMessage = '';
+  error: { name: string, email: string, telephone: string, subject: string } = { name: '', email: '', telephone: '', subject: '' };
 
-  ngOnInit(): void {
-    if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
+  constructor(private router: Router, private db: AngularFireDatabase) { }
+
+  ngOnInit() {
+    if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
   }
 
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    this.db.list('/users/')
+      .push({ ...form.value });
+  }
+  clearErrorMessage() {
+    this.errorMessage = '';
+    this.error = { name: '', email: '', telephone: '', subject: '' };
+  }
+  validateForm(email: any, name: any, telephone: any, subject: any, commentandfeedback: any) {
+    if (email.length === 0) {
+      this.errorMessage = "Please Enter Email Id";
+      return false;
+    }
+
+    if (name.length === 0) {
+      this.errorMessage = "Enter your Name";
+      return false;
+    }
+
+    if (telephone.length === 0) {
+      this.errorMessage = "Please Enter no";
+      return false;
+    }
+
+    if (subject.length === 0) {
+      this.errorMessage = "write something ";
+      return false;
+    }
+
+    if (commentandfeedback.length === 0) {
+      this.errorMessage = "Enter Something";
+      return false;
+    }
+
+    this.errorMessage = '';
+    return true;
+
+  }
 }

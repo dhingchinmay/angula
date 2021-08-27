@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+// import { auth } from 'firebase/app';
+
+import firebase from 'firebase/app';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +12,8 @@ export class AuthService {
 
   authState: any = null;
   private profileObs$: BehaviorSubject<any> = new BehaviorSubject(null);
-  constructor(private afu: AngularFireAuth, private router: Router) {
+  isLoggedIn: any;
+  constructor(private afu: AngularFireAuth, public afAuth: AngularFireAuth) {
     this.afu.authState.subscribe((auth => {
       this.authState = auth;
     }))
@@ -42,7 +45,7 @@ export class AuthService {
     }
   }
 
-  registerWithEmail(email: string, password: string) {
+  registerWithEmail(email: string, password: string, name: string) {
     return this.afu.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         this.loginWithEmail(email, password);
@@ -61,8 +64,10 @@ export class AuthService {
         console.log('user', user);
         this.authState = user
         console.log('this.authState ', this.authState);
-        localStorage.setItem('email', user.user.email);
-        localStorage.setItem('uid', user.user.uid);
+        //sessionStorage.setItem('email', user.user.email);
+        //sessionStorage.setItem('uid', user.user.uid);
+        sessionStorage.setItem('email', user.user.email);
+        sessionStorage.setItem('uid', user.user.uid);
         this.setProfileObs(true);
       })
       .catch(error => {
@@ -77,16 +82,30 @@ export class AuthService {
     return this.profileObs$.asObservable();
   }
   signout(): void {
-    localStorage.clear();
+    sessionStorage.clear();
     console.log('signout method');
     this.afu.signOut();
     this.setProfileObs(false);
   }
   login(): void {
-    localStorage.clear();
+    sessionStorage.clear();
     console.log('login method');
     this.afu.signOut();
     this.setProfileObs(true);
   }
+  GoogleAuth() {
 
+    // return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  }
+  AuthLogin(provider: any) {
+    // return firebase.auth.signInWithPopup(provider)
+    // .then((_result: any) => {
+    //     console.log('You have been successfully logged in!')
+    // }).catch((error: any) => {
+    //     console.log(error)
+    // })
+  }
+
+  onSubmit(): void {
+  }
 }

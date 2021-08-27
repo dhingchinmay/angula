@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  public userDetails : any;
+  public userDetails: any;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    const storage = localStorage.getItem('google_auth');
+    const storage = sessionStorage.getItem('google_auth');
 
     if (storage) {
       this.userDetails = JSON.parse(storage);
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     }
   }
   signOut(): void {
-    localStorage.removeItem('google_auth');
+    sessionStorage.removeItem('google_auth');
     this.router.navigate(['/home']).then();
   }
 

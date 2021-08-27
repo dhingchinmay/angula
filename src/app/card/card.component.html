@@ -1,32 +1,31 @@
 <mat-toolbar>
-  <span class="title-center">Houses View</span>
+    <span class="title-center">Houses View</span>
 </mat-toolbar>
 <div class="container">
-  <div class="row">
-    <div class="content">
-      <hr class="invis">
-      <div class="col-sm-6 col-md-4 col-lg-4 div" *ngFor="let product of resultProducts">
-        <mat-card class="mat-elevation-z12 ">
-          <mat-card-header>
-            <mat-card-title>{{product.name}}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="{{product.src}}">
-          <div class="feature_2im2 clearfix">
-            <h4 class="pull-right mgt"><a [routerLink]='["/Property"]' class="bg_1">For Rent</a></h4>
-          </div>
+    <div class="row">
+        <div class="content">
+            <hr class="invis">
+            <div class="col-sm-6 col-md-4 col-lg-4 div" *ngFor="let product of resultProducts">
+                <mat-card class="mat-elevation-z12 ">
+                    <mat-card-header>
+                        <mat-card-title>{{product.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="{{product.src}}">
+                    <div class="feature_2im2 clearfix">
+                        <h4 class="pull-right mgt"><a [routerLink]='["/Property"]' class="bg_1">For Rent</a></h4>
+                    </div>
 
-          <mat-card-content>
-            <p>
-              {{product.description}} <br>
-              {{product.price}}
-            </p>
-          </mat-card-content>
+                    <mat-card-content>
+                        <p>
+                            {{product.description}} <br> {{product.price}}
+                        </p>
+                    </mat-card-content>
 
-          <mat-card-actions>
-            <button mat-button color="accent" [routerLink]='["/Property"]'>More Details</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-      </div>
-      </div>
-      </div>
+                    <mat-card-actions>
+                        <button mat-button color="accent" [routerLink]='["/Property"]'>More Details</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,6 @@ declare const L: any;
 })
 export class MapsComponent implements OnInit {
 
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -22,33 +21,33 @@ export class MapsComponent implements OnInit {
           mapTypeId: "roadmap",
         }
       );
-    
+
       // Create the search box and link it to the UI element.
       const input = document.getElementById("pac-input") as HTMLInputElement;
       const searchBox = new google.maps.places.SearchBox(input);
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    
+
       // Bias the SearchBox results towards current map's viewport.
       map.addListener("bounds_changed", () => {
         searchBox.setBounds(map.getBounds() as google.maps.LatLngBounds);
       });
-    
+
       let markers: google.maps.Marker[] = [];
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces();
-    
+
         if (places.length == 0) {
           return;
         }
-    
+
         // Clear out the old markers.
         markers.forEach((marker) => {
           marker.setMap(null);
         });
         markers = [];
-    
+
         // For each place, get the icon, name and location.
         const bounds = new google.maps.LatLngBounds();
         places.forEach((place) => {
@@ -63,7 +62,7 @@ export class MapsComponent implements OnInit {
             anchor: new google.maps.Point(17, 34),
             scaledSize: new google.maps.Size(25, 25),
           };
-    
+
           // Create a marker for each place.
           markers.push(
             new google.maps.Marker({
@@ -73,7 +72,7 @@ export class MapsComponent implements OnInit {
               position: place.geometry.location,
             })
           );
-    
+
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
@@ -84,67 +83,67 @@ export class MapsComponent implements OnInit {
         map.fitBounds(bounds);
       });
     }
-    
-  //   if (!navigator.geolocation) {
-  //     console.log('location is not supported');
-  //   }
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     const coords = position.coords;
-  //     const latLong = [coords.latitude, coords.longitude];
-  //     console.log(
-  //       `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-  //     );
-  //     let mymap = L.map('map').setView(latLong, 13);
 
-  //     L.tileLayer(
-  //       'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VicmF0MDA3IiwiYSI6ImNrYjNyMjJxYjBibnIyem55d2NhcTdzM2IifQ.-NnMzrAAlykYciP4RP9zYQ',
-  //       {
-  //         attribution:
-  //           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  //         maxZoom: 18,
-  //         id: 'mapbox/streets-v11',
-  //         tileSize: 512,
-  //         zoomOffset: -1,
-  //         accessToken: 'pk.eyJ1IjoiY2hpbm1heWRoaW5nIiwiYSI6ImNrcmJxODk5dTEwZTcycHF1a2VhaWYxYTcifQ.mGog1rXSoieSLP_KtvwBXg',
-  //       }
-  //     ).addTo(mymap);
+    //   if (!navigator.geolocation) {
+    //     console.log('location is not supported');
+    //   }
+    //   navigator.geolocation.getCurrentPosition((position) => {
+    //     const coords = position.coords;
+    //     const latLong = [coords.latitude, coords.longitude];
+    //     console.log(
+    //       `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+    //     );
+    //     let mymap = L.map('map').setView(latLong, 13);
 
-  //     let marker = L.marker(latLong).addTo(mymap);
+    //     L.tileLayer(
+    //       'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VicmF0MDA3IiwiYSI6ImNrYjNyMjJxYjBibnIyem55d2NhcTdzM2IifQ.-NnMzrAAlykYciP4RP9zYQ',
+    //       {
+    //         attribution:
+    //           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    //         maxZoom: 18,
+    //         id: 'mapbox/streets-v11',
+    //         tileSize: 512,
+    //         zoomOffset: -1,
+    //         accessToken: 'pk.eyJ1IjoiY2hpbm1heWRoaW5nIiwiYSI6ImNrcmJxODk5dTEwZTcycHF1a2VhaWYxYTcifQ.mGog1rXSoieSLP_KtvwBXg',
+    //       }
+    //     ).addTo(mymap);
 
-  //     marker.bindPopup('<b>Hi</b>').openPopup();
+    //     let marker = L.marker(latLong).addTo(mymap);
 
-  //     let popup = L.popup()
-  //       .setLatLng(latLong)
-  //       .setContent('I am Chinmay')
-  //       .openOn(mymap);
-  //   });
-  //   this.watchPosition();
-  // }
+    //     marker.bindPopup('<b>Hi</b>').openPopup();
 
-  // watchPosition() {
-  //   let desLat = 0;
-  //   let desLon = 0;
-  //   let id = navigator.geolocation.watchPosition(
-  //     (position) => {
-  //       console.log(
-  //         `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-  //       );
-  //       if (position.coords.latitude === desLat) {
-  //         navigator.geolocation.clearWatch(id);
-  //       }
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     },
-  //     {
-  //       enableHighAccuracy: true,
-  //       timeout: 5000,
-  //       maximumAge: 0,
-  //     }
-  //   );
-  if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
-    this.router.navigate(['/Login']);
-  } 
-  // }
-}
+    //     let popup = L.popup()
+    //       .setLatLng(latLong)
+    //       .setContent('I am Chinmay')
+    //       .openOn(mymap);
+    //   });
+    //   this.watchPosition();
+    // }
+
+    // watchPosition() {
+    //   let desLat = 0;
+    //   let desLon = 0;
+    //   let id = navigator.geolocation.watchPosition(
+    //     (position) => {
+    //       console.log(
+    //         `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+    //       );
+    //       if (position.coords.latitude === desLat) {
+    //         navigator.geolocation.clearWatch(id);
+    //       }
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     },
+    //     {
+    //       enableHighAccuracy: true,
+    //       timeout: 5000,
+    //       maximumAge: 0,
+    //     }
+    //   );
+    if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
+      this.router.navigate(['/Login']);
+    }
+    // }
+  }
 }

@@ -15,10 +15,11 @@ export class NavbarComponent implements OnInit {
   sub: any;
   constructor(public authservice: AuthService,
     private router: Router,
-    private dataService: DataserviceService) { }
+    private dataService: DataserviceService,
+    public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.isLogin = localStorage.getItem('email')?.length ? true : false;
+    this.isLogin = sessionStorage.getItem('email')?.length ? true : false;
     this.authservice.getProfileObs().subscribe((profile: any) => {
       console.log('profile profile', profile);
       if (profile) {
@@ -29,6 +30,8 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.isLogin = false;
     this.authservice.signout();
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('uid')
     this.router.navigate(['/Login']);
   }
   applyFilter(event: any) {

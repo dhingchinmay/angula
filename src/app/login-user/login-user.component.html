@@ -1,43 +1,50 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box" class="mat-elevation-z12">
-    <mat-card-header color="accent">
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
+    <mat-card class="box" class="mat-elevation-z12">
+        <mat-card-header color="accent">
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
 
-    <form class="example-form" (ngSubmit)="login()">
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Enter Email-Id" required>
-        </mat-form-field>
+        <form #formData='ngForm' class="example-form" (ngSubmit)="login(formData)">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Enter Email-Id" required>
+                </mat-form-field>
 
-        <br>
+                <br>
 
-        <mat-form-field class="example-full-width">
-          <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
-        </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+                </mat-form-field>
 
-      </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block mat-success">Login</button>
-      <div class="title-center"><br>New User<a [routerLink]='["/Register"]'><br>Register</a></div>
+            </mat-card-content>
+            <button mat-stroked-button color="accent" class="btn-block mat-success">Login</button>
+            <div class="title-center"><br>New User
+                <a [routerLink]='["/Register"]'><br>Register</a>
+            </div>
 
-    </form>
+        </form>
 
-    <!-- <p class="horizontal-line-text">
+        <!-- <p class="horizontal-line-text">
       <span>or</span>
     </p>
-
     <button class="btn btn-block google-sign-in" (click)="signInHandler()">
       <img [src]="'assets/Images/google.svg'" alt="google" />
       <span>SignIn with Google</span>
     </button> -->
 
-    <div class="form-group">
-      <p *ngIf="errorMessage.length > 0" class="text-danger">
-        {{errorMessage}}</p>
+        <!-- <div class="formGroup">
+  <button type="button" (click)="authService.GoogleAuth()">
+    Log in with Google
+  </button> -->
+        <!-- </div> -->
 
-      <p *ngIf="error.message.length > 0" class="text-danger">
-        {{error.message}} </p>
-    </div>
-  </mat-card>
+        <div class="form-group">
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                {{errorMessage}}</p>
+
+            <p *ngIf="error.message.length > 0" class="text-danger">
+                {{error.message}} </p>
+        </div>
+    </mat-card>
 
 </div>

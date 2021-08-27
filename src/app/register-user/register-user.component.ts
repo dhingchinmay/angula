@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { NgForm } from '@angular/forms';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-register-user',
@@ -10,15 +11,16 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 })
 export class RegisterUserComponent implements OnInit {
 
+  name = "";
   email = "";
   password = "";
   message = '';
   errorMessage = ''; // validation error handle
   error: { name: string, message: string } = { name: '', message: '' }; // for firbase error handle
 
-  constructor(private authservice: AuthService, 
+  constructor(private authservice: AuthService,
     private router: Router,
-    private authService: SocialAuthService) { }
+    private db: AngularFireDatabase) { }
 
   ngOnInit() {
   }
@@ -27,10 +29,13 @@ export class RegisterUserComponent implements OnInit {
     this.error = { name: '', message: '' };
   }
 
-  register() {
+  register(form: NgForm) {
+    console.log(form.value);
+    this.db.list('/register/')
+      .push({ ...form.value });
     this.clearErrorMessage();
-    if (this.validateForm(this.email, this.password)) {
-      this.authservice.registerWithEmail(this.email, this.password)
+    if (this.validateForm(this.email, this.password, this.name)) {
+      this.authservice.registerWithEmail(this.email, this.password, this.name)
         .then((res: any) => {
           console.log('res #', res);
           this.message = "You are registered with data on Firebase"
@@ -46,14 +51,19 @@ export class RegisterUserComponent implements OnInit {
 
   // signUpHandler(): void {
   //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data: any) => {
-  //     localStorage.setItem('google_auth', JSON.stringify(data));
+  //    sessionStorage.setItem('google_auth', JSON.stringify(data));
   //     this.router.navigate(['/home']).then();
   //   });
   // }
 
-  validateForm(email: any, password: any) {
+  validateForm(email: any, password: any, name: any) {
     if (email.length === 0) {
       this.errorMessage = "Please Enter Email Id";
+      return false;
+    }
+
+    if (name.length === 0) {
+      this.errorMessage = "Please Enter Your Name";
       return false;
     }
 
@@ -70,5 +80,5 @@ export class RegisterUserComponent implements OnInit {
     this.errorMessage = '';
     return true;
   }
-  
+
 }

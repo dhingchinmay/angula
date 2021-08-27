@@ -1,12 +1,13 @@
 .title-center {
     flex: 1 1 auto;
     text-align: center;
-  }
-  .image{
+}
+
+.image {
     height: 90%;
     width: 90%;
-  }
-  .asdfg{
+}
+
+.asdfg {
     padding-top: 50px;
-  }
-  
+}

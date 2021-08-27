@@ -64,8 +64,10 @@ export class AuthService {
         console.log('user', user);
         this.authState = user
         console.log('this.authState ', this.authState);
-        localStorage.setItem('email', user.user.email);
-        localStorage.setItem('uid', user.user.uid);
+        //sessionStorage.setItem('email', user.user.email);
+        //sessionStorage.setItem('uid', user.user.uid);
+        sessionStorage.setItem('email', user.user.email);
+        sessionStorage.setItem('uid', user.user.uid);
         this.setProfileObs(true);
       })
       .catch(error => {
@@ -80,13 +82,13 @@ export class AuthService {
     return this.profileObs$.asObservable();
   }
   signout(): void {
-    localStorage.clear();
+    sessionStorage.clear();
     console.log('signout method');
     this.afu.signOut();
     this.setProfileObs(false);
   }
   login(): void {
-    localStorage.clear();
+    sessionStorage.clear();
     console.log('login method');
     this.afu.signOut();
     this.setProfileObs(true);

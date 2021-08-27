@@ -10,87 +10,92 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-  }
-  
-  mat-card {
+}
+
+mat-card {
     width: 30%;
     margin: 10% auto;
     border-radius: 8px;
-  }
-  mat-form-field, mat-checkbox {
+}
+
+mat-form-field,
+mat-checkbox {
     width: 80%;
     display: block;
     margin: auto;
-  }
-  mat-card-content {
+}
+
+mat-card-content {
     margin-top: 20px;
-  }
-  
-  .login-button {
+}
+
+.login-button {
     margin-top: 20px;
     display: block;
     width: 80%;
     margin: 20px auto;
-  }
-  
-  .mat-success {
-    background-color:gray;
-    color:black;
-}
-  
-.title-center {
-  flex: 1 1 auto;
-  text-align: center;
 }
 
+.mat-success {
+    background-color: gray;
+    color: black;
+}
+
+.title-center {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+
 /* You can add global styles to this file, and also import other style files */
+
 body {
-  background-color: #E5E5E5;
+    background-color: #E5E5E5;
 }
 
 .container-fluid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .custom-card {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
-  padding: 30px;
-  width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    width: 400px;
 }
 
 .horizontal-line-text {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #D8DDEC;
-  line-height: 0.1rem;
-  margin: 25px 0 30px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #D8DDEC;
+    line-height: 0.1rem;
+    margin: 25px 0 30px 0;
 }
 
 span {
-  background: white;
-  padding: 0 10px;
+    background: white;
+    padding: 0 10px;
 }
 
 .google-sign-in {
-background-color: white;
-border: 1px solid #D8DDEC;
-padding: 10px 30px;
-text-align: center;
-font-weight: bold;
-height: 100%;
+    background-color: white;
+    border: 1px solid #D8DDEC;
+    padding: 10px 30px;
+    text-align: center;
+    font-weight: bold;
+    height: 100%;
 }
 
 img {
-  float: left;
+    float: left;
 }
 
 .user-avatar {
-height: 100px;
-width: 100px;
-border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
 }

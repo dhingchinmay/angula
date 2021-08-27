@@ -12,23 +12,23 @@
     height: 100%;
     z-index: 100;
     transition: left 0.5s;
-  }
-  
-  .app-label {
+}
+
+.app-label {
     margin-top: 32px;
     color: black;
     font-size: 2.5em;
     font-family: "Pacifico", cursive;
-  }
-  
-  .app-splash-inner {
+}
+
+.app-splash-inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .app-logo {
+}
+
+.app-logo {
     background: url("./../../assets/img/49.png");
     background-repeat: no-repeat;
     max-width: 100%;
@@ -36,7 +36,4 @@
     background-size: contain;
     width: 100px;
     height: 100px;
-  }
-
-  
- 
+}

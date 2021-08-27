@@ -1,10 +1,11 @@
-.slick-slider {  
-    height: 90%; 
-    width: 90%; 
-    margin: auto;  
-  } 
- .title-center {
+.slick-slider {
+    height: 90%;
+    width: 90%;
+    margin: auto;
+}
+
+.title-center {
     flex: 1 1 auto;
     text-align: center;
     color: black;
-  }
+}

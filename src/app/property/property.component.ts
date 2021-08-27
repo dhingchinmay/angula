@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DataserviceService } from '../services/dataservice.service';
 
 
@@ -20,7 +21,7 @@ export class PropertyComponent implements OnInit {
   ];
   proc = [
     { "id": 1, "name": "Family house", "description": "2 BHK House for rent in Surat 1200 sqft", "price": "45000/Month", "src": "assets/img/37.jpg/", "Details": "2 Bedroom, 2 Bathroom, Kitchen" },
-    { "id": 2, "name": "Apartment", "description": "3 BHK House for rent in Amritsar 2000 sqft", "price": "50000/Month", "src": "assets/img/38.jpg/", "Details": "3 Bedroom, 1 Bathroom, Kitchen"  },
+    { "id": 2, "name": "Apartment", "description": "3 BHK House for rent in Amritsar 2000 sqft", "price": "50000/Month", "src": "assets/img/38.jpg/", "Details": "3 Bedroom, 1 Bathroom, Kitchen" },
     { "id": 3, "name": "Residential", "description": "2 BHK House for rent in Dispur 1800 sqft", "price": "20000/Month", "src": "assets/img/47.jpg/", "Details": "2 Bedroom, 1 Bathroom, Kitchen" },
     { "id": 4, "name": "Commercial", "description": "Houses and Offices on rent for Business", "price": "20000/Month", "src": "assets/img/53.jpg/", "Details": "3-4 rooms, 1 hall" },
     { "id": 5, "name": "Villa", "description": "2 BHK House for rent in Ambari 1200 sqft", "price": "20000/Month", "src": "assets/img/40.jpg/", "Details": "2 Bedroom, 1 Bathroom, Kitchen" },
@@ -30,12 +31,14 @@ export class PropertyComponent implements OnInit {
     { "id": 9, "name": "Balcony View", "description": "2 BHK House for rent in Ratanpur 900 sqft", "price": "20000/Month", "src": "assets/img/44.jpg/", "Details": "2 Bedroom, 2 Bathroom, Kitchen" },
   ];
   resultItems = [...this.items];
-  constructor(private router: Router, private dataService: DataserviceService) { }
-
-  myClickFunction(event: any) { 
+  property: any;
+  constructor(private router: Router,
+    private dataService: DataserviceService) {
+  }
+  myClickFunction(event: any) {
     alert("Booked");
     console.log(event);
- }
+  }
 
   ngOnInit(): void {
     this.dataService.getSearchValue().subscribe((res: any) => {
@@ -52,10 +55,10 @@ export class PropertyComponent implements OnInit {
       else {
         this.resultItems = [...this.items];
       }
-      console.log('this.resultItems@@', this.resultItems);
+      console.log('this.resultItems', this.resultItems);
       console.log('this.product', this.items);
     })
-    if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
+    if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
   }
