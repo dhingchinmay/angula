@@ -16,7 +16,7 @@ export class MapsComponent implements OnInit {
       const map = new google.maps.Map(
         document.getElementById("map") as HTMLElement,
         {
-          center: { lat: 24.571270, lng: 73.691544 },
+          center: { lat: 21.7679, lng: 78.8718 },
           zoom: 13,
           mapTypeId: "roadmap",
         }

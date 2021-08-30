@@ -35,6 +35,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { RouterModule } from '@angular/router';
     ExampleComponent,
     DashboardComponent,
     SplashScreenComponent,
+    AdminComponent,
 
   ],
   imports: [
@@ -60,6 +63,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AngularMaterialModule,
     FlexLayoutModule,
     NgbModule,

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -7,52 +8,47 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class DashboardComponent implements OnInit {
-  
+export class AdminComponent implements OnInit {
   title = "";
   details = "";
   description ="";
-  errorMessage = ''; 
+  errorMessage = '';
+  photo:any; 
   error: { title: string, details: string, description: string,  } = { title: '', details: '' , description:'' };
   selectedFile: File;
   fb: any;
   downloadURL: Observable<string>;
+  fileToBeUpload : File;
   constructor(private router: Router,
     private db: AngularFireDatabase,
-    private storage: AngularFireStorage) { }
-  
-  ngOnInit() {
-    if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
-      this.router.navigate(['/Login']);
-    }
-  }
+    private storage: AngularFireStorage,private http:HttpClient) { }
 
+  ngOnInit(): void {
+}
   onSubmit(form:NgForm){
-    console.log(form.value);
-    this.db.list('/Admin/')
-    .push({...form.value});
-  }
-  onFileSelected(event: any) {
     var n = Date.now();
-    const file = event.target.files[0];
+    
     const filePath = `Images/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`Images/${n}`, file);
+    const task = this.storage.upload(`Images/${n}`, this.fileToBeUpload);
     task
       .snapshotChanges()
       .pipe(
         finalize(() => {
+        
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
-              console.log(url)
+              console.log(this.fb);
+              console.log(form.value);
+              this.db.list('/Property/')
+    .push({...form.value,propertyImage:this.fb});
             }
-            console.log(this.fb);
           });
         })
       )
@@ -61,6 +57,15 @@ export class DashboardComponent implements OnInit {
           console.log(url);
         }
       });
-
+      // console.log(this.fb);
+      
   }
+  onFileSelected(event: any) {
+  
+    // const file = event.target.files[0];
+    this.fileToBeUpload = event.target.files[0];
+    // console.log(file)
+  
+}
+
 }

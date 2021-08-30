@@ -75,6 +75,7 @@ export class AuthService {
         throw error
       });
   }
+
   setProfileObs(value: any) {
     this.profileObs$.next(value);
   }
@@ -93,11 +94,16 @@ export class AuthService {
     this.afu.signOut();
     this.setProfileObs(true);
   }
-  GoogleAuth() {
-
-    // return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  onSubmit(): void {
+    sessionStorage.clear();
+    console.log('contact method');
+    this.setProfileObs(true);
   }
-  AuthLogin(provider: any) {
+  // GoogleAuth() {
+
+  //   // return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  // }
+  // AuthLogin(provider: any) {
     // return firebase.auth.signInWithPopup(provider)
     // .then((_result: any) => {
     //     console.log('You have been successfully logged in!')
@@ -105,7 +111,3 @@ export class AuthService {
     //     console.log(error)
     // })
   }
-
-  onSubmit(): void {
-  }
-}

@@ -12,7 +12,7 @@
                         <mat-card-header>
                             <mat-card-title>{{product.name}}</mat-card-title>
                         </mat-card-header>
-                        <img mat-card-image src="{{product.src}}">
+                        <img class="card" mat-card-image src="{{product.src}}">
                         <div class="feature_2im2 clearfix">
                             <h4 class="pull-right mgt"><a href="#" class="bg_4">For Rent</a></h4>
                         </div>
@@ -58,18 +58,18 @@
                     <div class="single-feature">
                         <div class="portfolio-items">
                             <div class="col-sm-6 col-md-4 col-lg-4 div" *ngFor="let pro of proc">
-                                <div class="portfolio-item ">
+                                <div class="portfolio-item">
                                     <div class="hover-bg">
                                         <a href="" data-lightbox-gallery="gallery1">
                                             <div class="hover-text asdff">
-                                                <h4>{{pro.name}}<br></h4>
+                                                <h4>{{pro.title}}<br></h4>
                                                 <h5>{{pro.price}}<br></h5>
                                                 <h5>{{pro.Details}}</h5>
                                                 <section>
                                                     <div class="example-button-row">{{pro.description}}<br></div>
                                                 </section>
                                             </div>
-                                            <img src="{{pro.src}}" class="img-responsive" alt="Project Title">
+                                            <img class="card" src="{{pro.propertyImage}}" class="img-responsive" alt="Project Title">
                                         </a>
                                     </div>
                                     <button mat-button [routerLink]='["/Contact"]' class="colorrr">More Details</button>
@@ -84,7 +84,7 @@
 </div>
 
 
-<app-example></app-example>
+<!-- <app-dashboard></app-dashboard> -->
 <!-- const port = 3000 
 app.listen(port, ()=>{
   console.log(`Example app listening at http://localhost:${port}`)

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +12,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 
 const routes: Routes = [
   // {path: '', component: LoginUserComponent},
-  { path: '', redirectTo: '/Login', pathMatch: 'full' },
+  { path: '', redirectTo: '/Login', pathMatch: 'full',},
   { path: 'Register', component: RegisterUserComponent },
   { path: 'Login', component: LoginUserComponent },
   { path: 'home', component: HomeComponent },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'Maps', component: MapsComponent },
   { path: 'LogOut', component: LogoutComponent },
   { path: 'Property', component: PropertyComponent },
+  { path: 'Admin', component: AdminComponent }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],

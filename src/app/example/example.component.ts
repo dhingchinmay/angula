@@ -21,9 +21,9 @@ export class ExampleComponent implements OnInit {
   onFileSelected(event: any) {
     var n = Date.now();
     const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
+    const filePath = `Images/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    const task = this.storage.upload(`Images/${n}`, file);
     task
       .snapshotChanges()
       .pipe(
@@ -32,6 +32,7 @@ export class ExampleComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
+              console.log(url)
             }
             console.log(this.fb);
           });

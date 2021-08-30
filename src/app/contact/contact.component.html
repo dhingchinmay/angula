@@ -11,26 +11,26 @@
 
         <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
             <mat-form-field>
-                <input matInput placeholder="Name" name="name" [(ngModel)]="name" required>
+                <input matInput type="name" placeholder="Enter Your Name" name="name" [(ngModel)]="name" required>
                 <mat-icon matSuffix>person</mat-icon>
             </mat-form-field><br>
             <mat-form-field>
-                <input matInput placeholder="Enter your email" name="email" [(ngModel)]="email" required>
+                <input matInput type="email" placeholder="Enter E-Mail" name="email" [(ngModel)]="email" required>
                 <mat-icon matSuffix>drafts</mat-icon>
             </mat-form-field><br>
             <mat-form-field>
-                <input type="tel" matInput placeholder="Telephone" name="Telephone" [(ngModel)]="telephone" required>
+                <input matInput type="telephone" placeholder="Mobile No" name="Telephone" [(ngModel)]="telephone" required>
                 <mat-icon matSuffix>call</mat-icon>
             </mat-form-field><br>
             <mat-form-field>
-                <input matInput placeholder="Subject" [(ngModel)]="subject" name="Subject" required>
+                <input matInput type="subject" placeholder="Title" [(ngModel)]="subject" name="Subject" required>
                 <mat-icon matSuffix>create</mat-icon>
             </mat-form-field><br>
             <mat-form-field>
-                <textarea matInput placeholder="Comment or Feedback" name="Comment or Feedback" [(ngModel)]="commentandfeedback" required></textarea>
+                <textarea matInput type="commentandfeedback" placeholder="Comment or Feedback" name="Comment or Feedback" [(ngModel)]="commentandfeedback" required></textarea>
                 <mat-icon matSuffix>save</mat-icon>
             </mat-form-field><br>
-            <button mat-raised-button class="btn-custom">Send Now<i class="material-icons">
+            <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
           send</i><br>
       </button>
 

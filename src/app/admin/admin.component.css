@@ -11,6 +11,13 @@ simple-snack-bar span {
     margin: 25px 0 30px 0;
 }
 
-.align {
-    align-content: center;
+.footer {
+    margin-top: 7.4em;
+    text-align: center;
+    vertical-align: middle;
+    min-height: 8%
+}
+
+.center {
+    margin: 0 auto !important;
 }

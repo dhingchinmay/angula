@@ -31,7 +31,7 @@ export class RegisterUserComponent implements OnInit {
 
   register(form: NgForm) {
     console.log(form.value);
-    this.db.list('/register/')
+    this.db.list('/Register/')
       .push({ ...form.value });
     this.clearErrorMessage();
     if (this.validateForm(this.email, this.password, this.name)) {

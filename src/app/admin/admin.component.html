@@ -1,0 +1,37 @@
+<mat-card id="card" style="text-align: center;" class="footer">
+    <header>
+        <h1>Add Properties </h1>
+    </header>
+    <div class="content">
+
+        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+            <mat-form-field>
+                <input matInput type="Title" placeholder="Title Name" name="title" [(ngModel)]="title" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput type="Description" placeholder="Enter Description" name="description" [(ngModel)]="description" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput type="Details" placeholder="Details" name="details" [(ngModel)]="details" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <br>
+            <div style="text-align:center;">
+                <input class="center" type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" [ngModel]="photo" />
+                <div class="form-group col-12 align"></div>
+            </div>
+            <br>
+            <mat-icon matSuffix></mat-icon>
+            <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
+          send</i><br>
+      </button>
+        </form>
+        <br>
+        <div class="form-group">
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                {{errorMessage}}</p>
+        </div>
+    </div>
+</mat-card>

@@ -1,4 +1,43 @@
-<div class="container-fluid">
+<br>
+<br>
+<br>
+<mat-card id="card" style="text-align: center;">
+    <header>
+        <h1>Add Properties </h1>
+    </header>
+    <div class="content">
+
+        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+            <mat-form-field>
+                <input matInput type="title" placeholder="Title Name" name="title" [(ngModel)]="title" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput type="description" placeholder="Enter Description" name="description" [(ngModel)]="description" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput type="details" placeholder="Details" name="details" [(ngModel)]="details" required>
+                <mat-icon matSuffix></mat-icon>
+            </mat-form-field><br>
+            <div class="form-group col-12 align">
+                <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+            </div>
+            <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
+          send</i><br>
+      </button>
+        </form>
+        <div class="form-group">
+            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                {{errorMessage}}</p>
+
+        </div>
+    </div>
+</mat-card>
+
+
+
+<!-- <div class="container-fluid">
 
     <div class="custom-card">
 
@@ -18,4 +57,4 @@
 
     </div>
 
-</div>
+</div> -->
