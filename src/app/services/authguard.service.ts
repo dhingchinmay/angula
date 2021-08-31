@@ -6,18 +6,23 @@ import { AuthService } from './auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard2 implements CanActivate {
     authService: any;
     constructor(
         private router: Router, authService: AuthService) { }
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-
-        if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
+            console.log(sessionStorage.getItem('email'));
+            console.log(sessionStorage.getItem('uid'));
+        if (!sessionStorage.getItem('email') && !sessionStorage.getItem('uid')) {
             this.router.navigate(['/Login']);
+            
             alert('You are not allowed to view this page');
+            console.log("auth service called")
             return  false;
+          }else{
+              return true;
           }
-          return true;
+        
         }
 
 }

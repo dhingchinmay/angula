@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AuthGuard } from '../services/authguard.service';
+import { AuthGuard2 } from '../services/authguard.service';
 
 @Component({
   selector: 'app-login-user',
@@ -22,7 +22,7 @@ export class LoginUserComponent implements OnInit {
     private router: Router,
     private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
-    private auth: AuthGuard) { }
+    private auth: AuthGuard2) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('email')?.length && sessionStorage.getItem('uid')?.length) {

@@ -32,7 +32,6 @@ export class AdminComponent implements OnInit {
 }
   onSubmit(form:NgForm){
     var n = Date.now();
-    
     const filePath = `Images/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`Images/${n}`, this.fileToBeUpload);
@@ -40,7 +39,6 @@ export class AdminComponent implements OnInit {
       .snapshotChanges()
       .pipe(
         finalize(() => {
-        
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
@@ -63,8 +61,6 @@ export class AdminComponent implements OnInit {
       
   }
   onFileSelected(event: any) {
-    
-  
     // const file = event.target.files[0];
     this.fileToBeUpload = event.target.files[0];
     // console.log(file)

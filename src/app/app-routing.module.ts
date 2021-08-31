@@ -10,10 +10,11 @@ import { LogoutComponent } from './logout/logout.component';
 import { MapsComponent } from './maps/maps.component';
 import { PropertyComponent } from './property/property.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { AuthGuard2 } from './services/authguard.service';
 
 const routes: Routes = [
   // {path: '', component: LoginUserComponent},
-  { path: '', redirectTo: '/Login', pathMatch: 'full',},
+  { path: '', redirectTo: '/Login', pathMatch: 'full', },
   { path: 'Register', component: RegisterUserComponent },
   { path: 'Login', component: LoginUserComponent },
   { path: 'home', component: HomeComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'Maps', component: MapsComponent },
   { path: 'LogOut', component: LogoutComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'Admin', component: AdminComponent },
+  { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2] },
   { path: 'Booking', component: BookingComponent }
 ];
 

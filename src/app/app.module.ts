@@ -33,12 +33,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './auth/auth.guard';
+// import { AuthGuard } from './auth/auth.guard';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookingComponent } from './booking/booking.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PropertyService } from './services/property.service';
+import { AuthGuard2 } from './services/authguard.service';
 
 
 @NgModule({
@@ -83,7 +85,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     RouterModule,
     AngularFireModule.initializeApp(environment.firebase, 'demoo-projectt'),
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard2,PropertyService],
 
   //     provide: 'SocialAuthServiceConfig',
   //     useValue: {

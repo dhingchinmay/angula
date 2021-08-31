@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DataserviceService } from '../services/dataservice.service';
+import { PropertyService } from '../services/property.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class PropertyComponent implements OnInit {
 
   items = [
     { "id": 1, "name": "Commercial", "description": "With Large Garden", "details": "Bedroom: 4 Bathroom: 2, Land Size: 5000 sqft, Building Size: 2400 sqft House", "price": "40000/Month", "src": "../../assets/img/35.jpg/", "address": "334, Gulab bagh Road, 313001, Udaipur" },
-    { "id": 2, "name": "Residential ", "description": "In Forests- Fresh Air", "details": "Bedroom: 3, Bathroom: 2, Land Size: 4000 sqft, Building Size: 2000 square House", "price": "30000/Month", "src": "../../assets/img/36.jpg/", "address": "55, Rock Hill, Mississippi, 313005, Surat  " },
+    { "id": 2, "name": "Residential ", "description": "In Forests- Fresh Air", "details": "Bedroom: 3, Bathroom: 2, Land Size: 4000 sqft, Building Size: 2000 square House", "price": "30000/Month", "src": "../../assets/img/36.jpg/", "address": "55, Rock Hill, Mississippi, 313005, Surat"},
     { "id": 3, "name": "Villa", "description": "With its Own Pool", "details": "Bedroom: 2, Bathroom: 2, Land Size: 3000 sqft, Building Size: 1400 square House", "price": "25000/Month", "src": "../../assets/img/31.jpg/", "address": "45, Shastri circle, RTDC, 313001, dispur" },
     { "id": 4, "name": "Apartment", "description": "With Best rates", "details": "Bedroom: 2, Bathroom: 2, Land Size: 3400 sqft, Building Size: 1400 square House", "price": "10000/Month", "src": "../../assets/img/24.jpg/", "address": "106, Sector 14, CA Circle, 313001, Agra" },
     { "id": 5, "name": "Beach House", "description": "Balcony View", "details": "Bedroom: 1, Bathroom: 1, Land Size: 2000 sqft, Building Size: 1200 sqft House", "price": "5000/Month", "src": "../../assets/img/16.jpg/", "address": "334, Rock Hill, Mississippi, 313001, Gujarat" },
@@ -38,7 +39,7 @@ export class PropertyComponent implements OnInit {
   property: any;
   constructor(private router: Router,
     private dataService: DataserviceService,private http:HttpClient,
-    private db: AngularFireDatabase) {
+    private db: AngularFireDatabase,private propertyService:PropertyService) {
   }
   
   ngOnInit(): void {
@@ -46,22 +47,27 @@ export class PropertyComponent implements OnInit {
   //  propertyList.subscribe((data)=>{
   //    console.log(data)
   //  })
-  this.db.list('/Property')
-    .valueChanges()
-    .subscribe((res: any) => {
-        console.log(res)//should give you the array of percentage. 
-        // this.labels = res;
-        this.proc.push(...res);
-        console.log(this.proc)
-    })
-    this.db.list('/Propertycard')
-    .valueChanges()
-    .subscribe((res: any) => {
-        console.log(res)//should give you the array of percentage. 
-        // this.labels = res;
-        this.items.push(...res);
-        console.log(this.items)
-    })
+
+  this.propertyService.getPropertyData().subscribe((res:any)=>{
+    this.proc.push(...res);
+  })
+
+  // this.db.list('/Property')
+  //   .valueChanges()
+  //   .subscribe((res: any) => {
+  //       console.log(res)//should give you the array of percentage. 
+  //       // this.labels = res;
+  //       this.proc.push(...res);
+  //       console.log(this.proc)
+  //   })
+  //   this.db.list('/Propertycard')
+  //   .valueChanges()
+  //   .subscribe((res: any) => {
+  //       console.log(res)//should give you the array of percentage. 
+  //       // this.labels = res;
+  //       this.items.push(...res);
+        
+  //   })
     
     this.dataService.getSearchValue().subscribe((res: any) => {
       console.log('res', res);
