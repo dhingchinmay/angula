@@ -66,5 +66,11 @@ div {
     margin-top: 0!important;
 }
 
+.title-left {
+    flex: 1 1 auto;
+    text-align: left;
+    color: black;
+}
+
 
 /*rent css end  */

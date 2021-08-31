@@ -37,6 +37,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BookingComponent } from './booking/booking.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -55,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     SplashScreenComponent,
     AdminComponent,
+    BookingComponent,
 
   ],
   imports: [
@@ -72,6 +76,7 @@ import { HttpClientModule } from '@angular/common/http';
     SlickCarouselModule,
     ShareIconsModule,
     GoogleMapsModule,
+    NgxSpinnerModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,

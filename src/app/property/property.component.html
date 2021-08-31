@@ -30,7 +30,7 @@
                             <button mat-button color="black">
 
               </button>
-                            <button mat-button color="black" (click)="myClickFunction($event)">
+                            <button mat-button color="black" [routerLink]='["/Booking"]'>
                 <mat-icon>book</mat-icon>Book
               </button>
                             <button mat-button color="black">
@@ -64,7 +64,7 @@
                                             <div class="hover-text asdff">
                                                 <h4>{{pro.title}}<br></h4>
                                                 <h5>{{pro.price}}<br></h5>
-                                                <h5>{{pro.Details}}</h5>
+                                                <h5>{{pro.details}}</h5>
                                                 <section>
                                                     <div class="example-button-row">{{pro.description}}<br></div>
                                                 </section>

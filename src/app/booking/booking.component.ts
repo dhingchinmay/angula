@@ -1,41 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { FormGroup, NgForm, Validators } from '@angular/forms';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-booking',
+  templateUrl: './booking.component.html',
+  styleUrls: ['./booking.component.css']
 })
-export class ContactComponent implements OnInit {
-  
+export class BookingComponent implements OnInit {
+
   email = "";
   name = "";
   telephone ="";
-  subject = "";
-  commentandfeedback="";
+  Familymember = "";
+  HouseTitleorDescription="";
   errorMessage = ''; 
   error: { name: string, email: string, telephone: string, subject:string } = { name: '', email: '' , telephone:'', subject:'' };
 
   constructor(private router: Router,private db: AngularFireDatabase ) { }
   
   ngOnInit() {
-    if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
+    if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
   }
 
   onSubmit(form:NgForm){
     console.log(form.value);
-    this.db.list('/Contact/')
+    this.db.list('/Booking/')
     .push({...form.value});
   }
-  clearErrorMessage() {
-    this.errorMessage = '';
-    this.error = { name: '', email:'', telephone:'', subject:''  };
-  }
-  validateForm(email: any, name: any, telephone: any, subject: any, commentandfeedback: any) {
+
+  validateForm(email: any, name: any, telephone: any, Familymember: String, HouseTitleorDescription: any) {
     if (email.length === 0) {
       this.errorMessage = "Please Enter Email Id";
       return false;
@@ -51,12 +48,12 @@ export class ContactComponent implements OnInit {
       return false;
     }
 
-    if (subject.length === 0) {
+    if (Familymember.length === 0) {
       this.errorMessage = "write something ";
       return false;
     }
 
-    if (commentandfeedback.length === 0) {
+    if (HouseTitleorDescription.length === 0) {
       this.errorMessage = "Enter Something";
       return false;
     }

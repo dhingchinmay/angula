@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   title = "";
   details = "";
   description ="";
+  price = "";
   errorMessage = '';
   photo:any; 
   error: { title: string, details: string, description: string,  } = { title: '', details: '' , description:'' };
@@ -46,6 +47,7 @@ export class AdminComponent implements OnInit {
               this.fb = url;
               console.log(this.fb);
               console.log(form.value);
+              this.db.list('/Propertycard/')
               this.db.list('/Property/')
     .push({...form.value,propertyImage:this.fb});
             }
@@ -61,6 +63,7 @@ export class AdminComponent implements OnInit {
       
   }
   onFileSelected(event: any) {
+    
   
     // const file = event.target.files[0];
     this.fileToBeUpload = event.target.files[0];
