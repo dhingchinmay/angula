@@ -15,7 +15,8 @@ import { PropertyService } from '../services/property.service';
 export class HomeComponent implements OnInit, OnDestroy {
 
   products = [
-    { "id": 1, "title": "Family house", "description": "2 BHK House for rent in Chandari 1200 sqft", "price": "45000/Month", "propertyImage": "assets/img/37.jpg/", "Details": "3 Beds, 2 Bath" },
+    { "id": 1, "title": "Balcony View", "description": "2 BHK House for rent in Surat 900 sqft", "price": "15000/Month", "propertyImage": "assets/img/44.jpg/", "Details": "3 Beds, 2 Bath" },
+    // { "id": 1, "title": "Family house", "description": "2 BHK House for rent in Chandari 1200 sqft", "price": "45000/Month", "propertyImage": "assets/img/37.jpg/", "Details": "3 Beds, 2 Bath" },
     // { "id": 2, "name": "Apartments", "description": "3 BHK House for rent in Gujarat 2000 sqft", "price": "50000/Month", "src": "assets/img/38.jpg/", "Details": "2 Beds, 1 Bath" },
     // { "id": 3, "name": "Residential", "description": "2 BHK House for rent in Dispur 1800 sqft", "price": "20000/Month", "src": "assets/img/39.jpg/", "Details": "2 Beds, 1 Bath" },
     // { "id": 4, "name": "Commercial", "description": "3 BHK House for rent in Ambari 1450 sqft", "price": "20000/Month", "src": "assets/img/54.jpeg/", "Details": "3 Beds, 1 Bath" },
