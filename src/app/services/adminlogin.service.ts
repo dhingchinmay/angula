@@ -7,7 +7,7 @@ import { BookingComponent } from "../booking/booking.component";
 @Injectable({
     providedIn: 'root'
   })
-export class PropertyService{
+export class AdminLoginService{
 
     constructor(private http:HttpClient,
         private db: AngularFireDatabase){
@@ -16,8 +16,8 @@ export class PropertyService{
     // proc = [
     //     { "id": 9, "title": "Balcony View", "description": "2 BHK House for rent in Ratanpur 900 sqft", "price": "20000/Month", "propertyImage": "assets/img/44.jpg/", "details": "2 Bedroom, 2 Bathroom, Kitchen" },
     // ];
-   getPropertyData(){
-  return  this.db.list('/Property')
+   getAdminData(){
+  return  this.db.list('/Admin')
     .valueChanges()
     // .subscribe((res: any) => {
     //     console.log(res)//should give you the array of percentage. 
@@ -25,7 +25,9 @@ export class PropertyService{
     //     // this.proc.push(...res);     
     // })
    } 
-  //  getData(){
-  //    return this.http.get("https://demoo-projectt-default-rtdb.firebaseio.com/Property.json");
-  //  }
+   getData(){
+    return this.http.get("https://demoo-projectt-default-rtdb.firebaseio.com/Admin.json");
+  }
 }
+ 
+

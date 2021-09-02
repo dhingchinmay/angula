@@ -42,6 +42,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PropertyService } from './services/property.service';
 import { AuthGuard2 } from './services/authguard.service';
 import { ToastrModule } from 'ngx-toastr';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
     SplashScreenComponent,
     AdminComponent,
     BookingComponent,
+    AdminloginComponent,
 
   ],
   imports: [

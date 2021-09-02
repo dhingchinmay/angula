@@ -43,13 +43,15 @@ export class PropertyComponent implements OnInit {
   }
   
   ngOnInit(): void {
-  //  const propertyList =  this.http.get("https://demoo-projectt-default-rtdb.firebaseio.com/Property.json");  
-  //  propertyList.subscribe((data)=>{
-  //    console.log(data)
-  //  })
+   const propertyList =  this.http.get("https://demoo-projectt-default-rtdb.firebaseio.com/Property.json");  
+   propertyList.subscribe((data)=>{
+     console.log(data)
+   })
 
   this.propertyService.getPropertyData().subscribe((res:any)=>{
+    console.log(res)
     this.proc.push(...res);
+    console.log(this.proc)
   })
 
   // this.db.list('/Property')

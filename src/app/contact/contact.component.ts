@@ -32,8 +32,11 @@ export class ContactComponent implements OnInit {
   
   onSubmit(form:NgForm){
     console.log(form.value);
+    const {CommentorFeedback,Subject,email,name,telephone} = form.value;
+    this.validateForm(email,name,telephone,Subject,this.commentandfeedback)
     this.db.list('/Contact/')
     .push({...form.value});
+
     }
   
 
@@ -43,28 +46,9 @@ export class ContactComponent implements OnInit {
     this.error = { name: '', message: ''  };
   }
   validateForm(email: any, name: any, telephone: string, subject: any, commentandfeedback: any) {
-    if (email.length === 0) {
-      this.errorMessage = "Please Enter Email Id";
-      return false;
-    }
-
-    if (name.length === 0) {
-      this.errorMessage = "Please Enter Password";
-      return false;
-    }
-
-    if (telephone.length === 0) {
+   
+    if (telephone.length <10 ) {
       this.errorMessage = "Please Enter no";
-      return false;
-    }
-
-    if (subject.length === 0) {
-      this.errorMessage = "write something ";
-      return false;
-    }
-
-    if (commentandfeedback.length === 0) {
-      this.errorMessage = "Enter Something";
       return false;
     }
 

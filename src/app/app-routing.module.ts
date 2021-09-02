@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'LogOut', component: LogoutComponent },
   { path: 'Property', component: PropertyComponent },
   { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2] },
-  { path: 'Booking', component: BookingComponent }
+  { path: 'Booking', component: BookingComponent },
+  { path: 'Adminlogin', component: AdminloginComponent }
 ];
 
 @NgModule({
