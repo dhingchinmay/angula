@@ -5,6 +5,10 @@ import { AuthService } from '../services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthGuard2 } from '../services/authguard.service';
+import { ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationService } from '../notification.service';
+
 
 @Component({
   selector: 'app-login-user',
@@ -13,22 +17,25 @@ import { AuthGuard2 } from '../services/authguard.service';
 })
 export class LoginUserComponent implements OnInit {
 
+  userDisplayName = '';
   email = "";
   password = "";
   errorMessage = ''; // validation error handle
   error: { name: string, message: string } = { name: '', message: '' }; // for firbase error handle
+  userData: any;
 
   constructor(private authservice: AuthService,
     private router: Router,
     private db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
-    private auth: AuthGuard2) { }
+    private auth: AuthGuard2,
+    private toastr: ToastrService,
+    ) { }
 
   ngOnInit() {
-    if (sessionStorage.getItem('email')?.length && sessionStorage.getItem('uid')?.length) {
+    if (sessionStorage .getItem('email')?.length && sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/home']);
     }
-
   }
 
   clearErrorMessage() {
@@ -47,14 +54,15 @@ export class LoginUserComponent implements OnInit {
     console.log(form.value);
     this.db.list('/Login/')
       .push({ ...form.value });
-      
     this.clearErrorMessage();
-    if (this.validateForm(this.email, this.password)) {
+    if (this.validateForm(this.email, this.password)) { 
       this.authservice.loginWithEmail(this.email, this.password)
         .then((res) => {
+          this.toastr.success('You are Logged In');
           this.router.navigate(['/home'])
         }).catch(_error => {
-          this.error = _error
+          this.error =  _error
+          this.toastr.error('Error Wrong Email-Id or Password');
           this.router.navigate(['/login'])
         })
     }

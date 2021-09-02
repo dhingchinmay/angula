@@ -10,17 +10,53 @@
 
                 <mat-form-field class="example-full-width">
                     <input matInput type="name" name="name" [(ngModel)]="name" placeholder="Enter Your Name" required>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 0" class="text-danger">
+                                {{error.message}} </p>
+
+                            <p *ngIf="message.length > 0" class="text-info">
+                                {{message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field>
 
                 <br>
 
                 <mat-form-field class="example-full-width">
                     <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Enter Email-Id" required>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 0" class="text-danger">
+                                {{error.message}} </p>
+
+                            <p *ngIf="message.length > 0" class="text-info">
+                                {{message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field>
 
                 <br>
                 <mat-form-field class="example-full-width">
                     <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 0" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 0" class="text-danger">
+                                {{error.message}} </p>
+
+                            <p *ngIf="message.length > 0" class="text-info">
+                                {{message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field>
 
 
@@ -40,16 +76,17 @@
       <img [src]="'assets/Images/google.svg'" alt="google" />
       <span>SignIn with Google</span>
     </button> -->
+        <!-- <mat-error>
+            <div class="form-group">
+                <p *ngIf="errorMessage.length > 0" class="text-danger">
+                    {{errorMessage}}</p>
 
-        <div class="form-group">
-            <p *ngIf="errorMessage.length > 0" class="text-danger">
-                {{errorMessage}}</p>
+                <p *ngIf="error.message.length > 0" class="text-danger">
+                    {{error.message}} </p>
 
-            <p *ngIf="error.message.length > 0" class="text-danger">
-                {{error.message}} </p>
-
-            <p *ngIf="message.length > 0" class="text-info">
-                {{message}} </p>
-        </div>
+                <p *ngIf="message.length > 0" class="text-info">
+                    {{message}} </p>
+            </div>
+        </mat-error> -->
     </mat-card>
 </div>

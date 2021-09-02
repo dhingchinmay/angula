@@ -30,9 +30,7 @@
                             <button mat-button color="black">
 
               </button>
-                            <button mat-button color="black" [routerLink]='["/Booking"]'>
-                <mat-icon>book</mat-icon>Book
-              </button>
+                            <button mat-button [routerLink]='["/Contact"]'>More Details</button>
                             <button mat-button color="black">
                 <mat-icon>share</mat-icon> <a href="https://web.whatsapp.com/">Share</a>
               </button>
@@ -72,7 +70,8 @@
                                             <img class="card" src="{{pro.propertyImage}}" class="img-responsive" alt="Project Title">
                                         </a>
                                     </div>
-                                    <button mat-button [routerLink]='["/Contact"]' class="colorrr">More Details</button>
+                                    <button mat-button color="black" [routerLink]='["/Booking"]' class="colorrr"><mat-icon>book</mat-icon>Book
+                                    </button>
                                 </div>
                             </div>
                         </div>

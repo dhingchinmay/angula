@@ -41,7 +41,7 @@ import { BookingComponent } from './booking/booking.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PropertyService } from './services/property.service';
 import { AuthGuard2 } from './services/authguard.service';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -83,6 +83,7 @@ import { AuthGuard2 } from './services/authguard.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule,
+    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'demoo-projectt'),
   ],
   providers: [AuthService, AuthGuard2,PropertyService],

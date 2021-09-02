@@ -21,7 +21,7 @@ export class BookingComponent implements OnInit {
   constructor(private router: Router,private db: AngularFireDatabase ) { }
   
   ngOnInit() {
-    if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
+    if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
   }

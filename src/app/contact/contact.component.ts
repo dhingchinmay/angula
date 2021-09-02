@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact',
@@ -16,26 +17,32 @@ export class ContactComponent implements OnInit {
   subject = "";
   commentandfeedback="";
   errorMessage = ''; 
-  error: { name: string, email: string, telephone: string, subject:string } = { name: '', email: '' , telephone:'', subject:'' };
+  error: { name: string, message: string } = { name: '', message: '' };
+  form: any;
 
-  constructor(private router: Router,private db: AngularFireDatabase ) { }
-  
+  constructor(private router: Router,
+    private db: AngularFireDatabase,
+    private toastr: ToastrService ) { }
+
   ngOnInit() {
     if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
   }
-
+  
   onSubmit(form:NgForm){
     console.log(form.value);
     this.db.list('/Contact/')
     .push({...form.value});
-  }
+    }
+  
+
+    
   clearErrorMessage() {
     this.errorMessage = '';
-    this.error = { name: '', email:'', telephone:'', subject:''  };
+    this.error = { name: '', message: ''  };
   }
-  validateForm(email: any, name: any, telephone: any, subject: any, commentandfeedback: any) {
+  validateForm(email: any, name: any, telephone: string, subject: any, commentandfeedback: any) {
     if (email.length === 0) {
       this.errorMessage = "Please Enter Email Id";
       return false;
@@ -66,3 +73,9 @@ export class ContactComponent implements OnInit {
 
   }
 }
+
+
+function then(arg0: () => void) {
+  throw new Error('Function not implemented.');
+}
+

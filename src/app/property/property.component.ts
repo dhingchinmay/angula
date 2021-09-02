@@ -16,11 +16,11 @@ export class PropertyComponent implements OnInit {
  labels: any;
 
   items = [
-    { "id": 1, "name": "Commercial", "description": "With Large Garden", "details": "Bedroom: 4 Bathroom: 2, Land Size: 5000 sqft, Building Size: 2400 sqft House", "price": "40000/Month", "src": "../../assets/img/35.jpg/", "address": "334, Gulab bagh Road, 313001, Udaipur" },
-    { "id": 2, "name": "Residential ", "description": "In Forests- Fresh Air", "details": "Bedroom: 3, Bathroom: 2, Land Size: 4000 sqft, Building Size: 2000 square House", "price": "30000/Month", "src": "../../assets/img/36.jpg/", "address": "55, Rock Hill, Mississippi, 313005, Surat"},
-    { "id": 3, "name": "Villa", "description": "With its Own Pool", "details": "Bedroom: 2, Bathroom: 2, Land Size: 3000 sqft, Building Size: 1400 square House", "price": "25000/Month", "src": "../../assets/img/31.jpg/", "address": "45, Shastri circle, RTDC, 313001, dispur" },
+    { "id": 1, "name": "Commercial", "description": "With Large Garden", "details": "Bedroom: 4 Bathroom: 2, Land Size: 5000 sqft, Building Size: 2400 sqft House", "price": "40000/Month", "src": "../../assets/img/35.jpg/", "address": "334, Gulab bagh Road, 313001, Surat" },
+    { "id": 2, "name": "Residential ", "description": "In Forests- Fresh Air", "details": "Bedroom: 3, Bathroom: 2, Land Size: 4000 sqft, Building Size: 2000 square House", "price": "30000/Month", "src": "../../assets/img/36.jpg/", "address": "55, Rock Hill, Mississippi, 313005, Gujarat"},
+    { "id": 3, "name": "Villa", "description": "With its Own Pool", "details": "Bedroom: 2, Bathroom: 2, Land Size: 3000 sqft, Building Size: 1400 square House", "price": "25000/Month", "src": "../../assets/img/31.jpg/", "address": "45, Shastri circle, RTDC, 313001, Dispur" },
     { "id": 4, "name": "Apartment", "description": "With Best rates", "details": "Bedroom: 2, Bathroom: 2, Land Size: 3400 sqft, Building Size: 1400 square House", "price": "10000/Month", "src": "../../assets/img/24.jpg/", "address": "106, Sector 14, CA Circle, 313001, Agra" },
-    { "id": 5, "name": "Beach House", "description": "Balcony View", "details": "Bedroom: 1, Bathroom: 1, Land Size: 2000 sqft, Building Size: 1200 sqft House", "price": "5000/Month", "src": "../../assets/img/16.jpg/", "address": "334, Rock Hill, Mississippi, 313001, Gujarat" },
+    { "id": 5, "name": "Beach House", "description": "Balcony View", "details": "Bedroom: 1, Bathroom: 1, Land Size: 2000 sqft, Building Size: 1200 sqft House", "price": "5000/Month", "src": "../../assets/img/16.jpg/", "address": "334, Rock Hill, Mississippi, 313001, Udaipur" },
     { "id": 6, "name": "Duplex", "description": "Duplex for full Family", "details": "Bedroom: 4, Bathroom: 3, Land Size: 6000 sqft, Building Size: 4000 square House", "price": "50000/Month", "src": "../../assets/img/30.jpg/", "address": "44, Pawai, Bandra Road, 313001, Mumbai" }
   ];
   proc = [
@@ -83,8 +83,8 @@ export class PropertyComponent implements OnInit {
       else {
         this.resultItems = [...this.items];
       }
-      console.log('this.resultItems', this.resultItems);
-      console.log('this.product', this.items);
+      // console.log('this.resultItems', this.resultItems);
+      // console.log('this.product', this.items);
     })
     if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);

@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
 	}
   
   ngOnInit() {
-    // if (!localStorage.getItem('email')?.length && !localStorage.getItem('uid')?.length) {
+    // if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
     //   this.router.navigate(['/Login']);
     // }
   }

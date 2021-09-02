@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 declare const L: any;
 
@@ -8,15 +8,44 @@ declare const L: any;
   styleUrls: ['./maps.component.css',]
 })
 export class MapsComponent implements OnInit {
+  markers: any;
+  center: any;
 
   constructor(private router: Router) { }
+  @ViewChild('map') mapElement: any;
+  map: google.maps.Map;
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    const mapProperties = {
+      center: new google.maps.LatLng(20.5937, 78.9629),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+ };
+ this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
+  
+
+    // addMarker(); {
+    //   this.markers.push({
+    //     position: {
+    //       lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
+    //       lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+    //     },
+    //     label: {
+    //       color: 'red',
+    //       text: 'Marker label ' + (this.markers.length + 1),
+    //     },
+    //     title: 'Marker title ' + (this.markers.length + 1),
+    //     options: { animation: google.maps.Animation.BOUNCE },
+    //   })
+    // }
+    
     function initAutocomplete() {
       const map = new google.maps.Map(
         document.getElementById("map") as HTMLElement,
         {
-          center: { lat: 21.7679, lng: 78.8718 },
+          center: { lat: 20.5937, lng: 78.9629 },
           zoom: 13,
           mapTypeId: "roadmap",
         }
@@ -84,66 +113,72 @@ export class MapsComponent implements OnInit {
       });
     }
 
-    //   if (!navigator.geolocation) {
-    //     console.log('location is not supported');
-    //   }
-    //   navigator.geolocation.getCurrentPosition((position) => {
-    //     const coords = position.coords;
-    //     const latLong = [coords.latitude, coords.longitude];
-    //     console.log(
-    //       `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-    //     );
-    //     let mymap = L.map('map').setView(latLong, 13);
+      if (!navigator.geolocation) {
+        console.log('location is not supported');
+      }
+      navigator.geolocation.getCurrentPosition((position) => {
+        const coords = position.coords;
+        const latLong = [coords.latitude, coords.longitude];
+        console.log(
+          `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+        );
+        let mymap = L.map('map').setView(latLong, 13);
 
-    //     L.tileLayer(
-    //       'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VicmF0MDA3IiwiYSI6ImNrYjNyMjJxYjBibnIyem55d2NhcTdzM2IifQ.-NnMzrAAlykYciP4RP9zYQ',
-    //       {
-    //         attribution:
-    //           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    //         maxZoom: 18,
-    //         id: 'mapbox/streets-v11',
-    //         tileSize: 512,
-    //         zoomOffset: -1,
-    //         accessToken: 'pk.eyJ1IjoiY2hpbm1heWRoaW5nIiwiYSI6ImNrcmJxODk5dTEwZTcycHF1a2VhaWYxYTcifQ.mGog1rXSoieSLP_KtvwBXg',
-    //       }
-    //     ).addTo(mymap);
+        L.tileLayer(
+          'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VicmF0MDA3IiwiYSI6ImNrYjNyMjJxYjBibnIyem55d2NhcTdzM2IifQ.-NnMzrAAlykYciP4RP9zYQ',
+          {
+            attribution:
+              'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiY2hpbm1heWRoaW5nIiwiYSI6ImNrcmJxODk5dTEwZTcycHF1a2VhaWYxYTcifQ.mGog1rXSoieSLP_KtvwBXg',
+          }
+        ).addTo(mymap);
 
-    //     let marker = L.marker(latLong).addTo(mymap);
+        let marker = L.marker(latLong).addTo(mymap);
 
-    //     marker.bindPopup('<b>Hi</b>').openPopup();
+        marker.bindPopup('<b>Hi</b>').openPopup();
 
-    //     let popup = L.popup()
-    //       .setLatLng(latLong)
-    //       .setContent('I am Chinmay')
-    //       .openOn(mymap);
-    //   });
-    //   this.watchPosition();
-    // }
+        let popup = L.popup()
+          .setLatLng(latLong)
+          .setContent('I am Chinmay')
+          .openOn(mymap);
+      });
+      this.watchPosition();
+    }
 
-    // watchPosition() {
-    //   let desLat = 0;
-    //   let desLon = 0;
-    //   let id = navigator.geolocation.watchPosition(
-    //     (position) => {
-    //       console.log(
-    //         `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-    //       );
-    //       if (position.coords.latitude === desLat) {
-    //         navigator.geolocation.clearWatch(id);
-    //       }
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     },
-    //     {
-    //       enableHighAccuracy: true,
-    //       timeout: 5000,
-    //       maximumAge: 0,
-    //     }
-    //   );
+    watchPosition() {
+      let desLat = 0;
+      let desLon = 0;
+      let id = navigator.geolocation.watchPosition(
+        (position) => {
+          console.log(
+            `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+          );
+          if (position.coords.latitude === desLat) {
+            navigator.geolocation.clearWatch(id);
+          }
+        },
+        (err) => {
+          console.log(err);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
     if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
     }
     // }
   }
 }
+
+// function addMarker() {
+//   throw new Error('Function not implemented.');
+// }
+
+  

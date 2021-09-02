@@ -99,3 +99,17 @@ img {
     width: 100px;
     border-radius: 50%;
 }
+
+.background-image {
+    top: 0;
+    margin: 20px;
+    padding: 0;
+    width: 98%;
+    height: 100%;
+    display: block;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 100%;
+}

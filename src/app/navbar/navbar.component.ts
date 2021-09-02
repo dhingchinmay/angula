@@ -13,6 +13,9 @@ export class NavbarComponent implements OnInit {
   isLogin = false;
   searchValue = '';
   sub: any;
+  Token: any;
+  Auth: any;
+  userDisplayName = '';
   constructor(public authservice: AuthService,
     private router: Router,
     private dataService: DataserviceService,
@@ -21,7 +24,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLogin = sessionStorage.getItem('email')?.length ? true : false;
     this.authservice.getProfileObs().subscribe((profile: any) => {
-      console.log('profile profile', profile);
+      // console.log('profile profile', profile);
       if (profile) {
         this.isLogin = profile;
       }
@@ -38,4 +41,10 @@ export class NavbarComponent implements OnInit {
     this.dataService.setSerachValue(this.searchValue);
   }
 
+  handleResponse(data: any){
+    this.Token.handle(data.access_token);
+    this.Auth.changeAuthStatus(true);
+    sessionStorage.setItem('loggedUser', data.Username);
+    this.router.navigateByUrl('/home');
+  } 
 }

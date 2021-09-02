@@ -3,7 +3,7 @@
 }
 
 .app-footer {
-    margin-top: 2em;
+    margin-top: flex;
     text-align: center;
     vertical-align: middle;
     min-height: 8%

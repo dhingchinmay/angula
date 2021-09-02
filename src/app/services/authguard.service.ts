@@ -15,8 +15,6 @@ export class AuthGuard2 implements CanActivate {
             console.log(sessionStorage.getItem('uid'));
         if (!sessionStorage.getItem('email') && !sessionStorage.getItem('uid')) {
             this.router.navigate(['/Login']);
-            
-            alert('You are not allowed to view this page');
             console.log("auth service called")
             return  false;
           }else{

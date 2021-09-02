@@ -1,31 +1,59 @@
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="box" class="mat-elevation-z12">
-        <mat-card-header color="accent">
-            <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
+<!-- <div class="demo-wrap">
+    <img class="demo-bg" src="https://images.unsplash.com/photo-1526488807855-309186804587?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGJsdXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80">
+</div> -->
+<div class="background-image" style="background-image : url('../../assets/img/72.png')">
+    <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="box" class="mat-elevation-z12">
+            <mat-card-header color="accent">
+                <mat-card-title>Login</mat-card-title>
+            </mat-card-header>
 
-        <form #formData='ngForm' class="example-form" (ngSubmit)="login(formData)">
-            <mat-card-content>
-                <mat-form-field class="example-full-width">
-                    <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Enter Email-Id" required>
-                </mat-form-field>
 
-                <br>
+            <form #formData='ngForm' class="example-form" (ngSubmit)="login(formData)">
+                <mat-card-content>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Enter Email-Id" required>
+                        <mat-error>
+                            <div class="form-group">
+                                <p *ngIf="errorMessage.length > 0" class="text-danger">
+                                    {{errorMessage}}</p>
 
-                <mat-form-field class="example-full-width">
-                    <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
-                </mat-form-field>
+                                <p *ngIf="error.message.length > 0" class="text-danger">
+                                    {{error.message}} </p>
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+                        <mat-error>
+                            <div class="form-group">
+                                <p *ngIf="errorMessage.length > 0" class="text-danger">
+                                    {{errorMessage}}</p>
 
-            </mat-card-content>
-            <button mat-stroked-button color="accent" class="btn-block mat-success">Login</button>
-            <a [routerLink]='["/Admin"]'><br>Admin</a>
-            <div class="title-center"><br>New User
-                <a [routerLink]='["/Register"]'><br>Register</a>
-            </div>
+                                <p *ngIf="error.message.length > 0" class="text-danger">
+                                    {{error.message}} </p>
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
 
-        </form>
 
-        <!-- <p class="horizontal-line-text">
+                    <!-- <div *ngFor="let item of multipleAutoCompleteElement.controls; let autoIndex=index" [formGroupName]="autoIndex">
+                    <mat-form-field appearance="outline" floatLabel="always">
+                      <mat-label [attr.for]="question.key">{{question.label}}</mat-label>
+                      <input #autoCompleteInput type="text" matInput [formControlName]="question.key" [matAutocomplete]="autoCompletePanel" (ngModelChange)="_filter($event, question)">
+                      <mat-error *ngIf="!isValid" class="errorMessage">{{question.label}} is required</mat-error>
+                    </mat-form-field>
+                  </div> -->
+                </mat-card-content>
+                <button mat-stroked-button color="accent" class="btn-block mat-success">Login</button>
+                <div class="title-center"><br>New User
+                    <a [routerLink]='["/Register"]'><br>Register</a>
+                </div>
+
+            </form>
+
+            <!-- <p class="horizontal-line-text">
       <span>or</span>
     </p>
     <button class="btn btn-block google-sign-in" (click)="signInHandler()">
@@ -33,12 +61,12 @@
       <span>SignIn with Google</span>
     </button> -->
 
-        <!-- <div class="formGroup">
+            <!-- <div class="formGroup">
   <button type="button" (click)="authService.GoogleAuth()">
     Log in with Google
   </button> -->
-        <!-- </div> -->
-
+            <!-- </div> -->
+            <!-- <mat-error>
         <div class="form-group">
             <p *ngIf="errorMessage.length > 0" class="text-danger">
                 {{errorMessage}}</p>
@@ -46,6 +74,7 @@
             <p *ngIf="error.message.length > 0" class="text-danger">
                 {{error.message}} </p>
         </div>
-    </mat-card>
+    </mat-error> -->
+        </mat-card>
 
-</div>
+    </div>

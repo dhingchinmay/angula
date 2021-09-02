@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-register-user',
@@ -20,7 +22,8 @@ export class RegisterUserComponent implements OnInit {
 
   constructor(private authservice: AuthService,
     private router: Router,
-    private db: AngularFireDatabase) { }
+    private db: AngularFireDatabase,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -37,6 +40,7 @@ export class RegisterUserComponent implements OnInit {
     if (this.validateForm(this.email, this.password, this.name)) {
       this.authservice.registerWithEmail(this.email, this.password, this.name)
         .then((res: any) => {
+          this.toastr.success('You are Logged In');
           console.log('res #', res);
           this.message = "You are registered with data on Firebase"
           setTimeout(() => {
@@ -44,6 +48,7 @@ export class RegisterUserComponent implements OnInit {
           }, 2000);
         }).catch(_error => {
           this.error = _error
+          this.toastr.error('Error Wrong Email-Id or Password');
           this.router.navigate(['/register'])
         })
     }
