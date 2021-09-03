@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'LogOut', component: LogoutComponent },
   { path: 'Property', component: PropertyComponent },
   { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2]},
-  { path: 'Booking', component: BookingComponent },
+  { path: 'Booking/:proId', component: BookingComponent },
   { path: 'Adminlogin', component: AdminloginComponent},
   { path: '**', component: NoPageFoundComponent }
 ];
