@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DataserviceService } from '../services/dataservice.service';
 import { PropertyService } from '../services/property.service';
 
@@ -14,6 +15,7 @@ import { PropertyService } from '../services/property.service';
 })
 export class PropertyComponent implements OnInit {
  labels: any;
+ payload : any;
 
   items = [
     { "id": 1, "name": "Commercial", "description": "With Large Garden", "details": "Bedroom: 4 Bathroom: 2, Land Size: 5000 sqft, Building Size: 2400 sqft House", "price": "40000/Month", "src": "../../assets/img/35.jpg/", "address": "334, Gulab bagh Road, 313001, Surat" },
@@ -106,6 +108,6 @@ export class PropertyComponent implements OnInit {
   //   // return this.proc;
   
   // }
-  
+
 }
 

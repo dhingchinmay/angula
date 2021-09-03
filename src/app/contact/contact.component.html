@@ -1,49 +1,46 @@
-<mat-card id="card" style="text-align: center;">
-    <div class="background">
+<br>
+<div class="background asdfghj">
+    <div style="text-align: center">
         <header>
+
             <h1>Contact Us </h1>
             <mat-icon>facebook</mat-icon>
             <mat-icon>whatsapp</mat-icon>
         </header>
-        <div class="content">
+        <div class="content ">
 
-            <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+            <form #formData='ngForm' (ngSubmit)="onSubmit(formData) ">
                 <mat-form-field>
-                    <input matInput type="name" placeholder="Enter Your Name" name="name" [(ngModel)]="name" required>
+                    <input matInput type="name " placeholder="Enter Your Name " name="name " [(ngModel)]="name " required>
                     <mat-icon matSuffix>person</mat-icon>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <input matInput type="email" placeholder="Enter E-Mail" name="email" [(ngModel)]="email" required>
+                    <input matInput type="email " placeholder="Enter E-Mail " name="email " [(ngModel)]="email " required>
                     <mat-icon matSuffix>drafts</mat-icon>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <input matInput type="telephone" placeholder="Mobile No" name="telephone" [(ngModel)]="telephone" required>
+                    <input matInput type="telephone " placeholder="Mobile No " name="telephone " [(ngModel)]="telephone " required>
                     <mat-icon matSuffix>call</mat-icon>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <input matInput type="subject" placeholder="Title" [(ngModel)]="subject" name="Subject" required>
+                    <input matInput type="subject " placeholder="Title " [(ngModel)]="subject " name="Subject " required>
                     <mat-icon matSuffix>create</mat-icon>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <textarea matInput type="commentandfeedback" placeholder="Comment or Feedback" name="CommentorFeedback" [(ngModel)]="commentandfeedback" required></textarea>
+                    <textarea matInput type="commentandfeedback " placeholder="Comment or Feedback " name="CommentorFeedback " [(ngModel)]="commentandfeedback " required></textarea>
                     <mat-icon matSuffix>feedback</mat-icon>
                 </mat-form-field><br>
-                <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
+                <button mat-raised-button class="btn-custom " disabled={{!formData.valid}}>Send Now<i class="material-icons ">
           send</i><br>
       </button>
 
                 <br><br>
-                <p class="">
+                <p class=" ">
                     <span>OR</span>
                 </p>
-                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="#">chinmaydhi123@gmail.com</a>
+                <p>Directly Contact Us <br> Mobile: <a href="# ">+91 7610850721</a><br> E-Mail: <a href="# ">chinmaydhi123@gmail.com</a>
                 </p>
             </form>
-            <div class="form-group">
-                <p *ngIf="errorMessage.length > 0" class="text-danger">
-                    {{errorMessage}}</p>
-
-            </div>
         </div>
     </div>
-</mat-card>
+</div>

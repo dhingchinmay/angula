@@ -78,12 +78,12 @@ export class AdminloginComponent implements OnInit {
          this.toastr.success('You are Logged as Admin');
           this.router.navigate(["/Admin"]);
        }else{
+        this.toastr.error('Error Wrong Email-Id or Password');
          this.router.navigate(["/Adminlogin"])
         //  .then(
           //  (isNavigated)=>{
             //  if(isNavigated){
             //  }else{
-              this.toastr.error('Error Wrong Email-Id or Password');
             //  }
           //  }
         //  )

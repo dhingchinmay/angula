@@ -1,49 +1,50 @@
 <br>
-<br>
-<br>
-<mat-card id="card" style="text-align: center;">
-    <header>
-        <h1>Book Your Dream Home </h1>
-        <mat-icon>home</mat-icon>
-    </header>
-    <div class="content">
+<div style="text-align: center">
+    <div class="backgroundabsd asdfghjhj">
+        <header>
+            <h1>Book Your Dream Home </h1>
+            <mat-icon>home</mat-icon>
+        </header>
+        <div class="content app-footeeer">
 
-        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-            <mat-form-field>
-                <input matInput type="name" placeholder="Enter Your Name" name="name" [(ngModel)]="name" required>
-                <mat-icon matSuffix>person</mat-icon>
-            </mat-form-field><br>
-            <mat-form-field>
-                <input matInput type="email" placeholder="Enter E-Mail" name="email" [(ngModel)]="email" required>
-                <mat-icon matSuffix>drafts</mat-icon>
-            </mat-form-field><br>
-            <mat-form-field>
-                <input matInput type="telephone" placeholder="Mobile No" name="Telephone" [(ngModel)]="telephone" required>
-                <mat-icon matSuffix>call</mat-icon>
-            </mat-form-field><br>
-            <mat-form-field>
-                <input matInput type="Familymember" placeholder="Family Member" [(ngModel)]="Familymember" name="Familymember" required>
-                <mat-icon matSuffix>supervisor_account</mat-icon>
-            </mat-form-field><br>
-            <mat-form-field>
-                <textarea matInput type="House Title or Description" placeholder="House Title or Description" name="HouseTitleorDescription" [(ngModel)]="HouseTitleorDescription" required></textarea>
-                <mat-icon matSuffix>subtitles</mat-icon>
-            </mat-form-field><br>
-            <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
+            <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+                <mat-form-field>
+                    <input matInput type="name" placeholder="Enter Your Name" name="name" [(ngModel)]="name" required>
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput type="email" placeholder="Enter E-Mail" name="email" [(ngModel)]="email" required>
+                    <mat-icon matSuffix>drafts</mat-icon>
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput type="telephone" placeholder="Mobile No" name="Telephone" [(ngModel)]="telephone" required>
+                    <mat-icon matSuffix>call</mat-icon>
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput type="Familymember" placeholder="Family Member" [(ngModel)]="Familymember" name="Familymember" required>
+                    <mat-icon matSuffix>supervisor_account</mat-icon>
+                </mat-form-field><br>
+                <mat-form-field>
+                    <textarea matInput type="House Title or Description" placeholder="House Title or Description" name="HouseTitleorDescription" [(ngModel)]="HouseTitleorDescription" required></textarea>
+                    <mat-icon matSuffix>subtitles</mat-icon>
+                </mat-form-field><br>
+                <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
           send</i><br>
       </button>
 
-            <br><br>
-            <p class="">
-                <span>OR</span>
-            </p>
-            <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="#">chinmaydhi123@gmail.com</a>
-            </p>
-        </form>
-        <div class="form-group">
-            <p *ngIf="errorMessage.length > 0" class="text-danger">
-                {{errorMessage}}</p>
+                <br><br>
+                <p class="">
+                    <span>OR</span>
+                </p>
+                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="#">chinmaydhi123@gmail.com</a>
+                </p>
 
+            </form>
+            <div class="form-group">
+                <p *ngIf="errorMessage.length > 0" class="text-danger">
+                    {{errorMessage}}</p>
+            </div>
         </div>
     </div>
-</mat-card>
+</div>

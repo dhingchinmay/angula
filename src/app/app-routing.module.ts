@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MapsComponent } from './maps/maps.component';
+import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { PropertyComponent } from './property/property.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { AuthGuard2 } from './services/authguard.service';
@@ -22,9 +23,10 @@ const routes: Routes = [
   { path: 'Maps', component: MapsComponent },
   { path: 'LogOut', component: LogoutComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2] },
+  { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2]},
   { path: 'Booking', component: BookingComponent },
-  { path: 'Adminlogin', component: AdminloginComponent }
+  { path: 'Adminlogin', component: AdminloginComponent},
+  { path: '**', component: NoPageFoundComponent }
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { BookingComponent } from "../booking/booking.component";
     providedIn: 'root'
   })
 export class PropertyService{
+  id: string;
 
     constructor(private http:HttpClient,
         private db: AngularFireDatabase){

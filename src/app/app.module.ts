@@ -43,6 +43,7 @@ import { PropertyService } from './services/property.service';
 import { AuthGuard2 } from './services/authguard.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
     AdminComponent,
     BookingComponent,
     AdminloginComponent,
+    NoPageFoundComponent,
 
   ],
   imports: [

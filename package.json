@@ -36,6 +36,7 @@
     "bootstrap": "^5.0.2",
     "connect": "^3.7.0",
     "firebase": "^8.7.0",
+    "firebase-tools": "^9.17.0",
     "jquery": "^3.6.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-connection-service": "^7.0.3",
