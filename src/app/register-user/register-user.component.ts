@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',

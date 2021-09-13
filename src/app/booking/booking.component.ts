@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -17,21 +17,27 @@ export class BookingComponent implements OnInit {
   HouseTitleorDescription="";
   errorMessage = ''; 
   error: { name: string, email: string, telephone: string, subject:string } = { name: '', email: '' , telephone:'', subject:'' };
-
-  constructor(private router: Router,private db: AngularFireDatabase ) { }
-  
+  propertyId:any;
+  form: any;
+  checkoutForm: any;
+  constructor(private router: Router,private db: AngularFireDatabase,private route :ActivatedRoute ) { }
+  userEmail :any;
   ngOnInit() {
+    this.route.params.subscribe(data=>{
+      this.propertyId = data.proId;
+    })
+    this.userEmail = sessionStorage.getItem('email');
     if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
+     
     }
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form:NgForm){ 
     console.log(form.value);
     this.db.list('/Booking/')
-    .push({...form.value});
+    .push({...form.value,propertyId:this.propertyId,ownerEmail:this.userEmail});
   }
-
   validateForm(email: any, name: any, telephone: any, Familymember: String, HouseTitleorDescription: any) {
     if (email.length === 0) {
       this.errorMessage = "Please Enter Email Id";

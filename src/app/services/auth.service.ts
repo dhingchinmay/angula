@@ -10,6 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 
+  userData: any;
   authState: any = null;
   private profileObs$: BehaviorSubject<any> = new BehaviorSubject(null);
   isLoggedIn: any;
@@ -50,6 +51,8 @@ export class AuthService {
       .then((user) => {
         this.loginWithEmail(email, password);
         this.authState = user
+        sessionStorage.setItem('user', JSON.stringify(this.userData));
+        console.log(this.userData)
         console.log('this.authState', this.authState);
       })
       .catch(error => {

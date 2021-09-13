@@ -20,6 +20,7 @@ export class PropertyService{
    getPropertyData(){
   return  this.db.list('/Property')
     .valueChanges()
+    
     // .subscribe((res: any) => {
     //     console.log(res)//should give you the array of percentage. 
     //     // this.labels = res;

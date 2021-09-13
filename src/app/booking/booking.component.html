@@ -26,7 +26,7 @@
                     <mat-icon matSuffix>supervisor_account</mat-icon>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <textarea matInput type="House Title or Description" placeholder="House Title or Description" name="HouseTitleorDescription" [(ngModel)]="HouseTitleorDescription" required></textarea>
+                    <textarea matInput type="House Title or Description" placeholder="House Title" name="HouseTitleorDescription" [(ngModel)]="HouseTitleorDescription" required></textarea>
                     <mat-icon matSuffix>subtitles</mat-icon>
                 </mat-form-field><br>
                 <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
@@ -37,14 +37,10 @@
                 <p class="">
                     <span>OR</span>
                 </p>
-                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="#">chinmaydhi123@gmail.com</a>
+                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br>
                 </p>
 
             </form>
-            <div class="form-group">
-                <p *ngIf="errorMessage.length > 0" class="text-danger">
-                    {{errorMessage}}</p>
-            </div>
         </div>
     </div>
 </div>

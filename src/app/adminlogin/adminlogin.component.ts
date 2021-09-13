@@ -22,6 +22,7 @@ export class AdminloginComponent implements OnInit {
   errorMessage = ''; // validation error handle
   error: { name: string, message: string } = { name: '', message: '' }; // for firbase error handle
   userData: any;
+  element : any;
 
   constructor(private authservice: AuthService,
     private router: Router,
@@ -76,6 +77,10 @@ export class AdminloginComponent implements OnInit {
          sessionStorage.setItem('aemail',email);
          sessionStorage.setItem('apassword',password);
          this.toastr.success('You are Logged as Admin');
+         setTimeout(
+          () => {
+              this.element.show();
+          }, 4000);  
           this.router.navigate(["/Admin"]);
        }else{
         this.toastr.error('Error Wrong Email-Id or Password');
