@@ -41,10 +41,10 @@ export class NavbarComponent implements OnInit {
     this.dataService.setSerachValue(this.searchValue);
   }
 
-  handleResponse(data: any){
+  handleResponse(data: any) {
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
     sessionStorage.setItem('loggedUser', data.Username);
     this.router.navigateByUrl('/home');
-  } 
+  }
 }

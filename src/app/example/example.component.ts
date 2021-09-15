@@ -21,9 +21,9 @@ export class ExampleComponent implements OnInit {
   onFileSelected(event: any) {
     var n = Date.now();
     const file = event.target.files[0];
-    const filePath = `Images/${n}`;
+    const filePath = `Photos/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`Images/${n}`, file);
+    const task = this.storage.upload(`Photos/${n}`, file);
     task
       .snapshotChanges()
       .pipe(

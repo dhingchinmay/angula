@@ -23,18 +23,19 @@
         <mat-icon>perm_contact_calendar</mat-icon>Contact
     </a>
     <a mat-button [routerLink]='["/Maps"]'>
-        <mat-icon> directions</mat-icon>Maps
+        <mat-icon>directions</mat-icon>Maps
     </a>
-    <!-- <a mat-button [routerLink]='["/Admin"]'>
-        <mat-icon> directions</mat-icon>Admin
-    </a> -->
 
     <!-- <form class="form-inline md-form form-sm active-cyan-2"> -->
     <input class="form-control example" type="text" [(ngModel)]="searchValue" (ngModelChange)="applyFilter($event)" placeholder="Search" aria-label="Search" mdbInput>
-    <button mat-button (click)="logOut()" *ngIf="isLogin">
+    <!-- <button mat-button (click)="logOut()" *ngIf="isLogin">
     <mat-icon> power_settings_new</mat-icon>LogOut
-  </button>
-
+  </button> -->
+    <button mat-button *ngIf="isLogin" [matMenuTriggerFor]="menu">My Profile<mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #menu="matMenu" class="qaz">
+        <button mat-menu-item class="qaz">Settings</button>
+        <button mat-menu-item (click)="logOut()" *ngIf="isLogin" class="qaz">LogOut</button>
+    </mat-menu>
     <!-- </form> -->
 
 </mat-toolbar>

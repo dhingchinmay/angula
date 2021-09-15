@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { BookingComponent } from './booking/booking.component';
 import { ContactComponent } from './contact/contact.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'Property', component: PropertyComponent },
   { path: 'Admin', component: AdminComponent,canActivate:[AuthGuard2]},
   { path: 'Booking/:proId', component: BookingComponent },
+  { path: 'Dashboard', component: DashboardComponent },
   { path: 'Adminlogin', component: AdminloginComponent},
   { path: '**', component: NoPageFoundComponent }
 ];

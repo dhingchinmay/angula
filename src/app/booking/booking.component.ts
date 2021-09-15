@@ -12,31 +12,31 @@ export class BookingComponent implements OnInit {
 
   email = "";
   name = "";
-  telephone ="";
+  telephone = "";
   Familymember = "";
-  HouseTitleorDescription="";
-  errorMessage = ''; 
-  error: { name: string, email: string, telephone: string, subject:string } = { name: '', email: '' , telephone:'', subject:'' };
-  propertyId:any;
+  HouseTitleorDescription = "";
+  errorMessage = '';
+  error: { name: string, email: string, telephone: string, subject: string } = { name: '', email: '', telephone: '', subject: '' };
+  propertyId: any;
   form: any;
   checkoutForm: any;
-  constructor(private router: Router,private db: AngularFireDatabase,private route :ActivatedRoute ) { }
-  userEmail :any;
+  constructor(private router: Router, private db: AngularFireDatabase, private route: ActivatedRoute) { }
+  userEmail: any;
   ngOnInit() {
-    this.route.params.subscribe(data=>{
+    this.route.params.subscribe(data => {
       this.propertyId = data.proId;
     })
     this.userEmail = sessionStorage.getItem('email');
     if (!sessionStorage.getItem('email')?.length && !sessionStorage.getItem('uid')?.length) {
       this.router.navigate(['/Login']);
-     
+
     }
   }
 
-  onSubmit(form:NgForm){ 
+  onSubmit(form: NgForm) {
     console.log(form.value);
     this.db.list('/Booking/')
-    .push({...form.value,propertyId:this.propertyId,ownerEmail:this.userEmail});
+      .push({ ...form.value, propertyId: this.propertyId, ownerEmail: this.userEmail });
   }
   validateForm(email: any, name: any, telephone: any, Familymember: String, HouseTitleorDescription: any) {
     if (email.length === 0) {
