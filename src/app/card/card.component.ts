@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DataserviceService } from '../services/dataservice.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { DataserviceService } from '../services/dataservice.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  propertyId: any;
 
   products = [
     { "id": 1, "name": "Commercial", "description": "2 BHK House for rent in Surat 1200 sqft", "price": "12000/Month", "src": "../../assets/img/35.jpg/" },
@@ -17,9 +19,13 @@ export class CardComponent implements OnInit {
     { "id": 6, "name": "Duplex", "description": "4 BHK House for rent in Mumbai 5000 sqft", "price": "45000/Month", "src": "../../assets/img/30.jpg/" }
   ];
   resultProducts = [...this.products];
-  constructor(private dataService: DataserviceService) { }
+  constructor(private dataService: DataserviceService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(data => {
+      this.propertyId = data.productId;
+    })
     this.dataService.getSearchValue().subscribe((res: any) => {
       console.log('res', res);
       this.resultProducts = [];

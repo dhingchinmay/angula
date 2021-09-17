@@ -12,7 +12,7 @@
                         <mat-card-header>
                             <mat-card-title>{{product.name}}</mat-card-title>
                         </mat-card-header>
-                        <img class="card" mat-card-image src="{{product.src}}">
+                        <img class="card" mat-card-image src="{{product.src}}" [routerLink]=' ["/Contact"]'>
                         <div class="feature_2im2 clearfix">
                             <h4 class="pull-right mgt"><a href="#" class="bg_1">For Rent</a></h4>
                         </div>
@@ -30,7 +30,7 @@
                             <button mat-button color="black">
 
               </button>
-                            <button mat-button [routerLink]='["/Contact"]'>More Details</button>
+                            <button mat-button [routerLink]=' ["/Contact"]'>More Details</button>
                             <button mat-button color="black">
                 <mat-icon>share</mat-icon> <a href="https://web.whatsapp.com/">Share</a>
               </button>

@@ -6,9 +6,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthGuard2 } from '../services/authguard.service';
 import { ToastrService } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NotificationService } from '../notification.service';
-
 
 @Component({
   selector: 'app-login-user',
@@ -52,8 +49,6 @@ export class LoginUserComponent implements OnInit {
 
   login(form: NgForm) {
     console.log(form.value);
-    this.db.list('/Login/')
-      .push({ ...form.value });
     this.clearErrorMessage();
     if (this.validateForm(this.email, this.password)) { 
       this.authservice.loginWithEmail(this.email, this.password)
