@@ -42,6 +42,7 @@ export class BookingComponent implements OnInit {
     console.log(form.value);
     this.db.list('/Booking/')
       .push({ ...form.value, propertyId: this.propertyId, ownerEmail: this.userEmail });
+      this.form.reset();
   }
-  
+
 }

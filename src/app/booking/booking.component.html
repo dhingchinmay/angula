@@ -4,6 +4,7 @@
         <header>
             <h1>Book Your Dream Home </h1>
             <mat-icon>home</mat-icon>
+            <mat-icon>book</mat-icon>
         </header>
         <div class="content">
             <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
@@ -27,7 +28,7 @@
                     <textarea matInput type="House Title or Description" placeholder="House Title" name="HouseTitleorDescription" [(ngModel)]="HouseTitleorDescription" required></textarea>
                     <mat-icon matSuffix>subtitles</mat-icon>
                 </mat-form-field><br>
-                <button mat-raised-button class="btn-custom" disabled={{!formData.valid}}>Send Now<i class="material-icons">
+                <button mat-raised-button class="btn-custom" [disabled]="formData.form.invalid">Send Now<i class="material-icons">
           send</i><br>
       </button>
 
@@ -35,7 +36,7 @@
                 <p class="">
                     <span>OR</span>
                 </p>
-                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br>
+                <p>Directly Contact Us <br> Mobile: <a [routerLink]="">+91 7610850721</a><br>
                 </p>
 
             </form>

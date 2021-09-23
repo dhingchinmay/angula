@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-demo',
@@ -8,33 +8,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DemoComponent implements OnInit {
 
-  registerForm: FormGroup;
-  submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
-  //only number will be add
-  keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
-      event.preventDefault();
+  // form = new FormGroup({
+  //   firstName: new FormControl('', Validators.required),
+  //   lastName: new FormControl('', Validators.required),
+  //   email: new FormControl('', [
+  //     Validators.required,
+  //     Validators.email
+  //   ]),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.minLength(6)
+  //   ])
+    
+  //  });
+  //   constructor() { }
+  
+  //   get firstname(){
+  //     return this.form.get('firstName')
+  //   }
+    ngOnInit() {
     }
-  }
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-       phonenumber: ['', [ Validators.required,
-        Validators.pattern("^[0-9]*$"),
-        Validators.minLength(10), Validators.maxLength(10)]]
-    });
-}
-// convenience getter for easy access to form fields
-get f() { return this.registerForm.controls; }
-onSubmit() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-        return;
-    }
-   
-}
+  
+    // onSubmit(){
+    //   alert(JSON.stringify(this.form.value));
+    // }
 
 }

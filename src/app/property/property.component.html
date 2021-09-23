@@ -29,11 +29,11 @@
                         <mat-card-actions>
                             <button mat-button color="black">
 
-              </button>
+                         </button>
                             <button mat-button [routerLink]=' ["/Contact"]'>More Details</button>
                             <button mat-button color="black">
-                <mat-icon>share</mat-icon> <a href="https://web.whatsapp.com/">Share</a>
-              </button>
+                         <mat-icon>share</mat-icon> <a href="https://web.whatsapp.com/">Share</a>
+                        </button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -58,7 +58,7 @@
                             <div class="col-sm-6 col-md-4 col-lg-4 div" *ngFor="let pro of proc">
                                 <div class="portfolio-item">
                                     <div class="hover-bg">
-                                        <a href="" data-lightbox-gallery="gallery1">
+                                        <a data-lightbox-gallery="gallery1">
                                             <div class="hover-text asdff">
                                                 <h4>{{pro.title}}<br></h4>
                                                 <h5>{{pro.price}}<br></h5>
@@ -70,7 +70,8 @@
                                             <img class="card" src="{{pro.propertyImage}}" class="img-responsive" alt="Project Title">
                                         </a>
                                     </div>
-                                    <button mat-button color="black" [routerLink]=" ['/Booking',pro.id]" class="colorrr"><mat-icon>book</mat-icon>Book
+                                    <button mat-button color="black" [routerLink]=" ['/Booking',pro.id]" class="colorrr">
+                                    <mat-icon>book</mat-icon>Book Now
                                     </button>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DataserviceService } from '../services/dataservice.service';
 import { PropertyService } from '../services/property.service';
 // import { collection, addDoc } from "firebase/firestore"; 
+import '@firebase/firestore';
 
 @Component({
   selector: 'app-property',
@@ -39,12 +40,18 @@ export class PropertyComponent implements OnInit {
   resultItems = [...this.items];
   property: any;
   bookedProperties: any = [];
+  get: string;
+  clickMessage = '';
+  productsCollectionRef : any;
   constructor(private router: Router,
-    private dataService: DataserviceService, private http: HttpClient,
-    private db: AngularFireDatabase, private propertyService: PropertyService) {
+    private dataService: DataserviceService, 
+    private http: HttpClient,
+    private db: AngularFireDatabase, 
+    private propertyService: PropertyService,
+    ) {
   }
 
-  ngOnInit() {
+   ngOnInit() {
     const currentLoginUser = sessionStorage.getItem('email');
     const bookingList = this.db.list('/Booking').valueChanges().subscribe(
       (data: any) => {
@@ -54,9 +61,11 @@ export class PropertyComponent implements OnInit {
           if (data[i].ownerEmail === currentLoginUser) {
             this.isBooked = true;
             this.bookedProperties.push(data[i].propertyId)
-          }
-        }
+
+          } 
+        } 
       }
+      
     )
 
     const propertyList = this.http.get("https://demoo-projectt-default-rtdb.firebaseio.com/Property.json");
@@ -73,6 +82,9 @@ export class PropertyComponent implements OnInit {
     this.propertyService.getPropertyData().subscribe((res: any) => {
       console.log(res)
     })
+
+ 
+    
     // this.proc.push(...res);
     // console.log(this.proc)
 
@@ -123,6 +135,7 @@ export class PropertyComponent implements OnInit {
     }
     console.log(this.proc)
   }
+
 }
 
   // getPropertyData(){

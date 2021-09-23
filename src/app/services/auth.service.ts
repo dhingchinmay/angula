@@ -14,13 +14,14 @@ export class AuthService {
   authState: any = null;
   private profileObs$: BehaviorSubject<any> = new BehaviorSubject(null);
   isLoggedIn: any;
-  constructor(private afu: AngularFireAuth, public afAuth: AngularFireAuth) {
+  constructor(private afu: AngularFireAuth, 
+    public afAuth: AngularFireAuth) {
     this.afu.authState.subscribe((auth => {
       this.authState = auth;
     }))
   }
 
-  // all firebase getdata functions
+  // // all firebase getdata functions
 
   get isUserAnonymousLoggedIn(): boolean {
     return (this.authState !== null) ? this.authState.isAnonymous : false

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -17,7 +18,7 @@ export class ContactComponent implements OnInit {
   subject = "";
   commentandfeedback = "";
   errorMessage = '';
-  error: { name: string, message: string } = { name: '', message: '' };
+  error: { name: string, email:string, telephone: string, subject:string,commentandfeedback: string, message: string } = { name: '', email:'', telephone:'', subject:'', commentandfeedback:'',message: '' };
   form: any;
   submitted: boolean;
   propertyId: any;
@@ -40,7 +41,14 @@ export class ContactComponent implements OnInit {
     console.log(form.value);
     this.db.list('/Contact/')
       .push({ ...form.value });
-  }
+
+      if(this.validateForm(this.name,this.telephone,this.subject,this.commentandfeedback,this.email)){
+        this.form=this.submitted ;
+      }else{
+        this.errorMessage;
+      }
+      this.form.onReset();
+      }
 
   onReset() {
     this.submitted = false;
@@ -49,12 +57,30 @@ export class ContactComponent implements OnInit {
 
   clearErrorMessage() {
     this.errorMessage = '';
-    this.error = { name: '', message: '' };
+    this.error = { name: '',email:'',telephone:'',subject:'', commentandfeedback:'', message: '', };
   }
 
-  validateForm(email: any, name: any, telephone: string, subject: any, commentandfeedback: any) {
-    if (telephone.length < 10) {
-      this.errorMessage = "Please Enter no";
+  validateForm(name: any, email: any, telephone: any, subject: any, commentandfeedback: any) {
+    if (name.length === 0) {
+      this.errorMessage = "Please Enter your name";
+      return false;
+    }
+    if (email.length === 0) {
+      this.errorMessage = "Please Enter Email Id";
+      return false;
+    }
+
+    if (telephone.length === 0) {
+      this.errorMessage = "Please Enter Mobile No";
+      return false;
+    }
+
+    if (subject.length === 0) {
+      this.errorMessage = "Please Enter SubjectNo";
+      return false;
+    }
+    if (commentandfeedback.length === 0) {
+      this.errorMessage = "Comment and Feedback ";
       return false;
     }
     this.errorMessage = '';

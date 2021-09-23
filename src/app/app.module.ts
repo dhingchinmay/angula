@@ -45,6 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { DemoComponent } from './demo/demo.component';
+import { FormreactiveComponent } from './formreactive/formreactive.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { DemoComponent } from './demo/demo.component';
     AdminloginComponent,
     NoPageFoundComponent,
     DemoComponent,
+    FormreactiveComponent
 
   ],
   imports: [

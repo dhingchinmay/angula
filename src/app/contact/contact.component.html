@@ -13,38 +13,86 @@
                 <mat-form-field>
                     <input matInput type="name " placeholder="Enter Your Name " name="name " [(ngModel)]="name " required>
                     <mat-icon matSuffix>person</mat-icon>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 10" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 10" class="text-danger">
+                                {{error.message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field><br>
                 <mat-form-field>
                     <input matInput type="email " placeholder="Enter E-Mail " name="email " [(ngModel)]="email " required>
                     <mat-icon matSuffix>drafts</mat-icon>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 10" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 10" class="text-danger">
+                                {{error.message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field><br>
                 <mat-form-field>
                     <input matInput type="telephone " placeholder="Mobile No " name="telephone " [(ngModel)]="telephone " required>
                     <mat-icon matSuffix>call</mat-icon>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 10" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 10" class="text-danger">
+                                {{error.message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field><br>
                 <mat-form-field>
                     <input matInput type="subject " placeholder="Category Title " [(ngModel)]="subject " name="Subject " required>
                     <mat-icon matSuffix>create</mat-icon>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 10" class="text-danger">
+                                {{errorMessage}}</p>
+
+                            <p *ngIf="error.message.length > 10" class="text-danger">
+                                {{error.message}} </p>
+                        </div>
+                    </mat-error>
                 </mat-form-field><br>
                 <mat-form-field>
                     <textarea matInput type="commentandfeedback " placeholder="Comment or Feedback " name="CommentorFeedback " [(ngModel)]="commentandfeedback " required></textarea>
                     <mat-icon matSuffix>feedback</mat-icon>
-                </mat-form-field><br>
-                <button mat-raised-button class="btn-custom " disabled={{!formData.valid}}>Send Now<i class="material-icons ">
-          send</i><br>
-      </button>
-                <div class="form-group">
-                    <p *ngIf="errorMessage.length > 10" class="text-danger">
-                        {{errorMessage}}</p>
+                    <mat-error>
+                        <div class="form-group">
+                            <p *ngIf="errorMessage.length > 10" class="text-danger">
+                                {{errorMessage}}</p>
 
-                    <p *ngIf="error.message.length > 10" class="text-danger">
-                        {{error.message}} </p>
-                </div>
-                <br><br>
+                            <p *ngIf="error.message.length > 10" class="text-danger">
+                                {{error.message}} </p>
+                        </div>
+                    </mat-error>
+                </mat-form-field><br>
+                <button mat-raised-button class="btn-custom mat-success" (click)="onSubmit">Send Now<i class="material-icons ">
+          send</i><br>
+                </button>
+                <!-- [disabled]="formData.form.invalid" -->
+                <!-- <mat-error>
+                    <div class="form-group">
+                        <p *ngIf="errorMessage.length > 10" class="text-danger">
+                            {{errorMessage}}</p>
+
+                        <p *ngIf="error.message.length > 10" class="text-danger">
+                            {{error.message}} </p>
+                    </div>
+                </mat-error> -->
+
                 <p class=" ">
-                    <span>OR</span>
+                    <br> <span>OR</span>
                 </p>
-                <p>Directly Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="# ">chinmaydhi123@gmail.com</a>
+                <p>Contact Us <br> Mobile: <a href="#">+91 7610850721</a><br> E-Mail: <a href="# ">chinmaydhi123@gmail.com</a>
                 </p>
             </form>
         </div>

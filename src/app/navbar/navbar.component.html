@@ -2,7 +2,7 @@
 <br>
 <br>
 
-<mat-toolbar class="mat-elevation-z8 app-toolbar navbar-fixed-top ">
+<mat-toolbar class="mat-elevation-z8 app-toolbar navbar-fixed-top">
     <mat-icon>line_style</mat-icon><a mat-button [routerLink]='["/"]'>House Renting App</a>
 
     <div class="spacer"></div>
@@ -33,9 +33,10 @@
   </button> -->
     <button mat-button *ngIf="isLogin" [matMenuTriggerFor]="menu">My Profile<mat-icon>arrow_drop_down</mat-icon></button>
     <mat-menu #menu="matMenu" class="qaz">
-        <button mat-menu-item class="qaz">Account Settings</button>
-        <button mat-menu-item class="qaz">Help</button>
-        <button mat-menu-item (click)="logOut()" *ngIf="isLogin" class="qaz">LogOut</button>
+        <button mat-menu-item>Account Settings</button>
+        <button mat-menu-item>Help</button>
+        <button mat-menu-item [routerLink]='["/Contact"]'>More Details</button>
+        <button mat-menu-item (click)="logOut()" *ngIf="isLogin">LogOut</button>
     </mat-menu>
 
     <!-- </form> -->
